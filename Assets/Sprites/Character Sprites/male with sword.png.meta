@@ -1,115 +1,115 @@
 fileFormatVersion: 2
-guid: 986b993c46450e4478cabec919ac2a01
+guid: e68680f051bf3b54bb573dad9eb27da7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1671096542575932750
-    second: male_0
+      213: 2709477157719108924
+    second: male with sword_0
   - first:
-      213: 738607739997410781
-    second: male_1
+      213: 1682779713220276224
+    second: male with sword_1
   - first:
-      213: -388370845403575368
-    second: male_2
+      213: -365673636990695605
+    second: male with sword_2
   - first:
-      213: 8751058307505316750
-    second: male_3
+      213: -6447544613484837222
+    second: male with sword_3
   - first:
-      213: 8728285357360309168
-    second: male_4
+      213: -1795528076885900217
+    second: male with sword_4
   - first:
-      213: -910232039299071242
-    second: male_5
+      213: 9180285480473161456
+    second: male with sword_5
   - first:
-      213: 2023215002818017790
-    second: male_6
+      213: 6098975505511417251
+    second: male with sword_6
   - first:
-      213: 6089775944537901879
-    second: male_7
+      213: 5060332820238786266
+    second: male with sword_7
   - first:
-      213: -3813435161837982627
-    second: male_8
+      213: 6373799697213062358
+    second: male with sword_8
   - first:
-      213: -2218936722825519257
-    second: male_9
+      213: 893273544252497363
+    second: male with sword_9
   - first:
-      213: 3067568994590912013
-    second: male_10
+      213: -8680109341156998663
+    second: male with sword_10
   - first:
-      213: -6036294671200686789
-    second: male_11
+      213: 7480809563509298975
+    second: male with sword_11
   - first:
-      213: -5384505643333047097
-    second: male_12
+      213: -7120862569974894428
+    second: male with sword_12
   - first:
-      213: -31402979684649856
-    second: male_13
+      213: -3423165881449291260
+    second: male with sword_13
   - first:
-      213: 2410798129182693517
-    second: male_14
+      213: 2014268471079886774
+    second: male with sword_14
   - first:
-      213: -3784547144835781361
-    second: male_15
+      213: 8714847778621493652
+    second: male with sword_15
   - first:
-      213: 4438223669397700661
-    second: male_16
+      213: -5670386755619999569
+    second: male with sword_16
   - first:
-      213: 3878579188027721279
-    second: male_17
+      213: 1208522208338550864
+    second: male with sword_17
   - first:
-      213: 4885293799277468399
-    second: male_18
+      213: -3026238914909680786
+    second: male with sword_18
   - first:
-      213: 1870220432398812381
-    second: male_19
+      213: -9009323112945912229
+    second: male with sword_19
   - first:
-      213: -8837349025470229578
-    second: male_20
+      213: -5334882639737525021
+    second: male with sword_20
   - first:
-      213: 7992902909913787522
-    second: male_21
+      213: 9118578891705584124
+    second: male with sword_21
   - first:
-      213: 6340223697784415047
-    second: male_22
+      213: -704480036109704710
+    second: male with sword_22
   - first:
-      213: -353587950339545220
-    second: male_23
+      213: -52003383407520729
+    second: male with sword_23
   - first:
-      213: -5821824272030155370
-    second: male_24
+      213: 8479400637840417412
+    second: male with sword_24
   - first:
-      213: -8712051505712852043
-    second: male_25
+      213: -7670339847774280517
+    second: male with sword_25
   - first:
-      213: -6678870821828614382
-    second: male_26
+      213: 3899208787841835470
+    second: male with sword_26
   - first:
-      213: -2093493623624835331
-    second: male_27
+      213: 6166406802565173621
+    second: male with sword_27
   - first:
-      213: -3392052456856227622
-    second: male_28
+      213: 8864704519616800260
+    second: male with sword_28
   - first:
-      213: 7417802746992929321
-    second: male_29
+      213: -9136215852121871884
+    second: male with sword_29
   - first:
-      213: 1129396730377414216
-    second: male_30
+      213: 8645419228924341529
+    second: male with sword_30
   - first:
-      213: -3624801759584829305
-    second: male_31
+      213: 8699953182913915425
+    second: male with sword_31
   - first:
-      213: 1882457262411492886
-    second: male_32
+      213: -7027164720273659982
+    second: male with sword_32
   - first:
-      213: 630766349459224638
-    second: male_33
+      213: 5030543464777259311
+    second: male with sword_33
   - first:
-      213: -5523196948256476010
-    second: male_34
+      213: -17190316310756456
+    second: male with sword_34
   - first:
-      213: 1435224378599849892
-    second: male_35
+      213: -6905440334590850539
+    second: male with sword_35
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -218,7 +218,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: male_0
+      name: male with sword_0
       rect:
         serializedVersion: 2
         x: 16
@@ -233,14 +233,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e453f9d937de03710800000000000000
-      internalID: 1671096542575932750
+      spriteID: c3de1e89e1ff99520800000000000000
+      internalID: 2709477157719108924
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_1
+      name: male with sword_1
       rect:
         serializedVersion: 2
         x: 80
@@ -255,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dd556e283df004a00800000000000000
-      internalID: 738607739997410781
+      spriteID: 0007ab1cb3f6a5710800000000000000
+      internalID: 1682779713220276224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_2
+      name: male with sword_2
       rect:
         serializedVersion: 2
         x: 144
@@ -277,14 +277,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8bb0a9616ca3c9af0800000000000000
-      internalID: -388370845403575368
+      spriteID: b47c17bb3cddceaf0800000000000000
+      internalID: -365673636990695605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_3
+      name: male with sword_3
       rect:
         serializedVersion: 2
         x: 208
@@ -299,14 +299,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e83e5936a21027970800000000000000
-      internalID: 8751058307505316750
+      spriteID: a96c0c7a558b586a0800000000000000
+      internalID: -6447544613484837222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_4
+      name: male with sword_4
       rect:
         serializedVersion: 2
         x: 272
@@ -321,14 +321,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0b364bfb949112970800000000000000
-      internalID: 8728285357360309168
+      spriteID: 744c9f82ab00517e0800000000000000
+      internalID: -1795528076885900217
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_5
+      name: male with sword_5
       rect:
         serializedVersion: 2
         x: 336
@@ -343,14 +343,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6f2466a68c43e53f0800000000000000
-      internalID: -910232039299071242
+      spriteID: 0fe6748510de66f70800000000000000
+      internalID: 9180285480473161456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_6
+      name: male with sword_6
       rect:
         serializedVersion: 2
         x: 400
@@ -365,14 +365,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ef9753b5357e31c10800000000000000
-      internalID: 2023215002818017790
+      spriteID: 3a501d398e9e3a450800000000000000
+      internalID: 6098975505511417251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_7
+      name: male with sword_7
       rect:
         serializedVersion: 2
         x: 465
@@ -387,14 +387,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 73b86efd4fa338450800000000000000
-      internalID: 6089775944537901879
+      spriteID: ade5593a3e9e93640800000000000000
+      internalID: 5060332820238786266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_8
+      name: male with sword_8
       rect:
         serializedVersion: 2
         x: 528
@@ -409,19 +409,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d5ca9acbce4f31bc0800000000000000
-      internalID: -3813435161837982627
+      spriteID: 6dc70e50e09447850800000000000000
+      internalID: 6373799697213062358
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_9
+      name: male with sword_9
       rect:
         serializedVersion: 2
-        x: 20
+        x: 8
         y: 129
-        width: 25
+        width: 37
         height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -431,19 +431,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 76f5ae89ec0c431e0800000000000000
-      internalID: -2218936722825519257
+      spriteID: 3dd9c644e8b856c00800000000000000
+      internalID: 893273544252497363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_10
+      name: male with sword_10
       rect:
         serializedVersion: 2
-        x: 82
+        x: 79
         y: 129
-        width: 27
+        width: 30
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -453,14 +453,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d0ee7967fb1329a20800000000000000
-      internalID: 3067568994590912013
+      spriteID: 9f189cc1b8e0a8780800000000000000
+      internalID: -8680109341156998663
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_11
+      name: male with sword_11
       rect:
         serializedVersion: 2
         x: 148
@@ -475,14 +475,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b3def7b6af5ca3ca0800000000000000
-      internalID: -6036294671200686789
+      spriteID: f171159b9ac21d760800000000000000
+      internalID: 7480809563509298975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_12
+      name: male with sword_12
       rect:
         serializedVersion: 2
         x: 212
@@ -497,19 +497,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7cc2c0e45a46645b0800000000000000
-      internalID: -5384505643333047097
+      spriteID: 4a07546783d9d2d90800000000000000
+      internalID: -7120862569974894428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_13
+      name: male with sword_13
       rect:
         serializedVersion: 2
-        x: 276
+        x: 270
         y: 129
-        width: 27
+        width: 33
         height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -519,19 +519,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 084f107082f609ff0800000000000000
-      internalID: -31402979684649856
+      spriteID: 4026afc74c87e70d0800000000000000
+      internalID: -3423165881449291260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_14
+      name: male with sword_14
       rect:
         serializedVersion: 2
-        x: 339
+        x: 331
         y: 129
-        width: 30
+        width: 38
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -541,19 +541,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d885c132020e47120800000000000000
-      internalID: 2410798129182693517
+      spriteID: 6bf5cfc908e14fb10800000000000000
+      internalID: 2014268471079886774
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_15
+      name: male with sword_15
       rect:
         serializedVersion: 2
-        x: 404
+        x: 393
         y: 129
-        width: 27
+        width: 38
         height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -563,19 +563,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f0d28545c669a7bc0800000000000000
-      internalID: -3784547144835781361
+      spriteID: 4911654a1eb51f870800000000000000
+      internalID: 8714847778621493652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_16
+      name: male with sword_16
       rect:
         serializedVersion: 2
-        x: 468
+        x: 461
         y: 129
-        width: 26
+        width: 33
         height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -585,14 +585,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5304e20a9ecb79d30800000000000000
-      internalID: 4438223669397700661
+      spriteID: fa0b03ce94dbe41b0800000000000000
+      internalID: -5670386755619999569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_17
+      name: male with sword_17
       rect:
         serializedVersion: 2
         x: 532
@@ -607,14 +607,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f368d9fc83b73d530800000000000000
-      internalID: 3878579188027721279
+      spriteID: 050a033ab8885c010800000000000000
+      internalID: 1208522208338550864
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_18
+      name: male with sword_18
       rect:
         serializedVersion: 2
         x: 16
@@ -629,14 +629,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fea1a59b3dc0cc340800000000000000
-      internalID: 4885293799277468399
+      spriteID: e6b48579db3a006d0800000000000000
+      internalID: -3026238914909680786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_19
+      name: male with sword_19
       rect:
         serializedVersion: 2
         x: 80
@@ -651,14 +651,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dd40fcc039b54f910800000000000000
-      internalID: 1870220432398812381
+      spriteID: b56742abc5478f280800000000000000
+      internalID: -9009323112945912229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_20
+      name: male with sword_20
       rect:
         serializedVersion: 2
         x: 144
@@ -673,14 +673,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6b3d3b432ed6b5580800000000000000
-      internalID: -8837349025470229578
+      spriteID: 3eceb0c2180b6f5b0800000000000000
+      internalID: -5334882639737525021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_21
+      name: male with sword_21
       rect:
         serializedVersion: 2
         x: 209
@@ -695,14 +695,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 28ce89d29de7cee60800000000000000
-      internalID: 7992902909913787522
+      spriteID: cf98c709033bb8e70800000000000000
+      internalID: 9118578891705584124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_22
+      name: male with sword_22
       rect:
         serializedVersion: 2
         x: 272
@@ -717,14 +717,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 74324f67cdffcf750800000000000000
-      internalID: 6340223697784415047
+      spriteID: af1a350c32f2936f0800000000000000
+      internalID: -704480036109704710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_23
+      name: male with sword_23
       rect:
         serializedVersion: 2
         x: 336
@@ -739,14 +739,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c77272fe1adc71bf0800000000000000
-      internalID: -353587950339545220
+      spriteID: 72450e4c23f374ff0800000000000000
+      internalID: -52003383407520729
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_24
+      name: male with sword_24
       rect:
         serializedVersion: 2
         x: 400
@@ -761,14 +761,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 69d35e08ba9b43fa0800000000000000
-      internalID: -5821824272030155370
+      spriteID: 482e2be44f1eca570800000000000000
+      internalID: 8479400637840417412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_25
+      name: male with sword_25
       rect:
         serializedVersion: 2
         x: 464
@@ -783,14 +783,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5b314116053981780800000000000000
-      internalID: -8712051505712852043
+      spriteID: bb4e3e23c8a7d8590800000000000000
+      internalID: -7670339847774280517
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_26
+      name: male with sword_26
       rect:
         serializedVersion: 2
         x: 528
@@ -805,14 +805,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2172f2caf52ef43a0800000000000000
-      internalID: -6678870821828614382
+      spriteID: ec1e460dbb5cc1630800000000000000
+      internalID: 3899208787841835470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_27
+      name: male with sword_27
       rect:
         serializedVersion: 2
         x: 19
@@ -827,14 +827,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dfedb4024aa62f2e0800000000000000
-      internalID: -2093493623624835331
+      spriteID: 571137fd05a739550800000000000000
+      internalID: 6166406802565173621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_28
+      name: male with sword_28
       rect:
         serializedVersion: 2
         x: 83
@@ -849,14 +849,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ad0f79923420de0d0800000000000000
-      internalID: -3392052456856227622
+      spriteID: 4062f8a1bc1c50b70800000000000000
+      internalID: 8864704519616800260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_29
+      name: male with sword_29
       rect:
         serializedVersion: 2
         x: 147
@@ -871,14 +871,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 92a2e641c4451f660800000000000000
-      internalID: 7417802746992929321
+      spriteID: 4f9abf69614a53180800000000000000
+      internalID: -9136215852121871884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_30
+      name: male with sword_30
       rect:
         serializedVersion: 2
         x: 210
@@ -893,14 +893,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84622aca75c6caf00800000000000000
-      internalID: 1129396730377414216
+      spriteID: 91ded5abbf2baf770800000000000000
+      internalID: 8645419228924341529
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_31
+      name: male with sword_31
       rect:
         serializedVersion: 2
         x: 273
@@ -915,14 +915,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7804cb2310e12bdc0800000000000000
-      internalID: -3624801759584829305
+      spriteID: 12aec1653517cb870800000000000000
+      internalID: 8699953182913915425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_32
+      name: male with sword_32
       rect:
         serializedVersion: 2
         x: 335
@@ -937,14 +937,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 61e24ee08e4df1a10800000000000000
-      internalID: 1882457262411492886
+      spriteID: 2b76eed1bee7a7e90800000000000000
+      internalID: -7027164720273659982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_33
+      name: male with sword_33
       rect:
         serializedVersion: 2
         x: 401
@@ -959,14 +959,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e3879c327aee0c800800000000000000
-      internalID: 630766349459224638
+      spriteID: f291635d0a410d540800000000000000
+      internalID: 5030543464777259311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_34
+      name: male with sword_34
       rect:
         serializedVersion: 2
         x: 466
@@ -981,14 +981,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 694b6a283a9a953b0800000000000000
-      internalID: -5523196948256476010
+      spriteID: 89388b69f7de2cff0800000000000000
+      internalID: -17190316310756456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_35
+      name: male with sword_35
       rect:
         serializedVersion: 2
         x: 531
@@ -1003,8 +1003,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4afbc6bd7f0fae310800000000000000
-      internalID: 1435224378599849892
+      spriteID: 51ace0f2a92fa20a0800000000000000
+      internalID: -6905440334590850539
       vertices: []
       indices: 
       edges: []
@@ -1023,42 +1023,42 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      male_0: 1671096542575932750
-      male_1: 738607739997410781
-      male_10: 3067568994590912013
-      male_11: -6036294671200686789
-      male_12: -5384505643333047097
-      male_13: -31402979684649856
-      male_14: 2410798129182693517
-      male_15: -3784547144835781361
-      male_16: 4438223669397700661
-      male_17: 3878579188027721279
-      male_18: 4885293799277468399
-      male_19: 1870220432398812381
-      male_2: -388370845403575368
-      male_20: -8837349025470229578
-      male_21: 7992902909913787522
-      male_22: 6340223697784415047
-      male_23: -353587950339545220
-      male_24: -5821824272030155370
-      male_25: -8712051505712852043
-      male_26: -6678870821828614382
-      male_27: -2093493623624835331
-      male_28: -3392052456856227622
-      male_29: 7417802746992929321
-      male_3: 8751058307505316750
-      male_30: 1129396730377414216
-      male_31: -3624801759584829305
-      male_32: 1882457262411492886
-      male_33: 630766349459224638
-      male_34: -5523196948256476010
-      male_35: 1435224378599849892
-      male_4: 8728285357360309168
-      male_5: -910232039299071242
-      male_6: 2023215002818017790
-      male_7: 6089775944537901879
-      male_8: -3813435161837982627
-      male_9: -2218936722825519257
+      male with sword_0: 2709477157719108924
+      male with sword_1: 1682779713220276224
+      male with sword_10: -8680109341156998663
+      male with sword_11: 7480809563509298975
+      male with sword_12: -7120862569974894428
+      male with sword_13: -3423165881449291260
+      male with sword_14: 2014268471079886774
+      male with sword_15: 8714847778621493652
+      male with sword_16: -5670386755619999569
+      male with sword_17: 1208522208338550864
+      male with sword_18: -3026238914909680786
+      male with sword_19: -9009323112945912229
+      male with sword_2: -365673636990695605
+      male with sword_20: -5334882639737525021
+      male with sword_21: 9118578891705584124
+      male with sword_22: -704480036109704710
+      male with sword_23: -52003383407520729
+      male with sword_24: 8479400637840417412
+      male with sword_25: -7670339847774280517
+      male with sword_26: 3899208787841835470
+      male with sword_27: 6166406802565173621
+      male with sword_28: 8864704519616800260
+      male with sword_29: -9136215852121871884
+      male with sword_3: -6447544613484837222
+      male with sword_30: 8645419228924341529
+      male with sword_31: 8699953182913915425
+      male with sword_32: -7027164720273659982
+      male with sword_33: 5030543464777259311
+      male with sword_34: -17190316310756456
+      male with sword_35: -6905440334590850539
+      male with sword_4: -1795528076885900217
+      male with sword_5: 9180285480473161456
+      male with sword_6: 6098975505511417251
+      male with sword_7: 5060332820238786266
+      male with sword_8: 6373799697213062358
+      male with sword_9: 893273544252497363
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
