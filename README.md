@@ -6,8 +6,12 @@
 	1.1. [Characters](#characters) \
 	1.2. [Environment](#environment) \
 	1.3. [Objects and Classes](#objects-and-classes) \
-	1.4. [Characters](#characters-1) \
-	1.5. [Environment](#environment-1)
+	&nbsp;&nbsp;&nbsp;&nbsp;1.3.1. [Characters](#characters-1) \
+	&nbsp;&nbsp;&nbsp;&nbsp;1.3.2. [Environment](#environment-1) \
+	1.4. [Interations Between Objects](#interactions-between-objects) \
+	&nbsp;&nbsp;&nbsp;&nbsp;1.4.1. [Player Methods](#player-methods) \
+	&nbsp;&nbsp;&nbsp;&nbsp;1.4.2. [Minotaur Methods](#minotaur-methods) \
+	&nbsp;&nbsp;&nbsp;&nbsp;1.4.3. [Other Small Creatures Methods](#other-small-creatures-methods)
 2. 
 
 ---
@@ -42,10 +46,10 @@
 ### Objects and Classes:
 #### *Characters*:
 ──► Character Class \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ──► Player Character \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ──► Player Character Object \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ──► Enemy Class \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ──► Minotaur \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ──► Other Small Creatures
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ──► Minotaur Object \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ──► Other Small Creatures Objects
 
 ***Character Class Features*** \
 \- General Movement \
@@ -63,17 +67,17 @@
 \- Animation \
 \- Sound
 
-|              Player              |              Minotaur             |          Other Enemy NPC         |
-| -------------------------------- | --------------------------------- | -------------------------------- |
-| Movement control                 |  AI Movement and Unique Behaviour | AI Movement and Unique Behaviour |
-| Player Health and Decrease Heath | Enemy Health and Decrease Health  | Enemy Health and Decrease Health |
-| Deal Damage                      | Deal Damage                       | Deal Damage                      |
-| Animation and Sound              | Animation and Sound               | Animation and Sound              |
+|              Player               |              Minotaur             |          Other Enemy NPC         |
+| --------------------------------- | --------------------------------- | -------------------------------- |
+| Movement control                  | AI Movement and Unique Behaviour  | AI Movement and Unique Behaviour |
+| Player Health and Decrease Health | Enemy Health and Decrease Health  | Enemy Health and Decrease Health |
+| Deal Damage                       | Deal Damage                       | Deal Damage                      |
+| Animation and Sound               | Animation and Sound               | Animation and Sound              |
 
 #### *Environment*:
 ──► Item Class \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ──► Old Coin/Tablet and Monolith \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ──► Sword
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ──► Old Coin/Tablet and Monolith Objects \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ──► Sword Object
 
 ***Item Class*** \
 \- Obtainable and Symbol in GUI \
@@ -87,3 +91,33 @@
 | Spawn at Determined Location              | Spawn at Determined Location | Spawn at Random Location                           |
 | Passive Animation before and after Pickup | Passive animation            | Passive Animation and Swing Animation after Pickup |
 | Ambient Sound before Pickup               | Ambient Sound                | Ambient Sound before Pickup                        |
+
+### Interactions Between Objects:
+
+#### *Player Methods*:
+1. ChangeHealth(amount):
+	- Change Player's health attribute by \<amount>
+2. Attack():
+	- Play attack animation
+3. CollectItem(item):
+	- Get name of \<item>
+	- Destroy \<item> object
+	- Add to GUI a symbol representing \<item>
+4. InteractMonolith():
+	- Play animation
+	- Remove GUI symbol
+	- Play monolith animation
+	- Add GUI symbol
+
+
+#### *Minotaur Methods*:
+1. ChangeHealth(amount):
+	- Change Minotaur's health attribute by \<amount>
+2. Attack():
+	- Play attack animation
+
+#### *Other Small Creatures Methods*:
+1. ChangeHealth(amount):
+	- Change Creature's health attribute by \<amount>
+2. Attack():
+	- Play attack animation
