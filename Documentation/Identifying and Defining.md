@@ -1,6 +1,10 @@
 # **Daedalus' Labyrinth** (name pending)
 #### *Assessment Two: IT and Software Object Oriented Programming Report*
 ---
+
+## Section: Identifying and Defining
+
+---
 ## Index
 1. [Design of Characters and Environment](#design-of-characters-and-environment) \
 	1.1. [Characters](#characters) \
@@ -12,12 +16,18 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;1.4.1. [Player Methods](#player-methods) \
 	&nbsp;&nbsp;&nbsp;&nbsp;1.4.2. [Minotaur Methods](#minotaur-methods) \
 	&nbsp;&nbsp;&nbsp;&nbsp;1.4.3. [Other Small Creatures Methods](#other-small-creatures-methods)
-2. 
+2. [Case Study: Hunt the Wumpus](#case-study-hunt-the-wumpus) \
+	2.1. [The Genesis of Wumpus](#the-genesis-of-wumpus) \
+	&nbsp;&nbsp;&nbsp;&nbsp;2.1.1. [Characters](#characters-2) \
+	&nbsp;&nbsp;&nbsp;&nbsp;2.1.2. [Environment](#environment-2) \
+	2.2. [Classes](#classes)
+3. [Procedural Programming vs. Object-Oriented Programming](#procedural-programming-vs.object-oriented-programming) \
+	3.1. [Procedural Programming](#procedural-programming)
 
 ---
 
 ## 1. Design of Characters and Environment
-### *Characters*:
+#### *Characters*:
 1. Player Character:
 	- Controlled by Player
 	- 32x32 Pixel design
@@ -31,7 +41,7 @@
 3. Other small creatures:
 	- Spiders (so generic ik)
 
-### *Environment*:
+#### *Environment*:
 1. Map:
 	- 2.5D Style
 	- Undergound Cave-like Labyrinth
@@ -121,3 +131,58 @@
 	- Change Creature's health attribute by \<amount>
 2. Attack():
 	- Play attack animation
+
+
+
+## 2. Case Study: Hunt the Wumpus
+### The Genesis of Wumpus
+[Hunt the Wumpus](https://en.wikipedia.org/wiki/Hunt_the_Wumpus) was a popular text-based adventure game developed by Gregory Yob in 1973. This game was inspired by the lack of 'hide and seek' style games without a typical cartesian grid. As a result, Hunt the Wumpus was developed with a 'squashed dodecahedron' as its world map.
+
+Yob created Hunt the Wumpus and submitted it to [People's Computer Company (PCC)](https://en.wikipedia.org/wiki/People%27s_Computer_Company), an organisation and newsletter active from 1972 - 1981. After its original publication in 1973, Hunt the Wumpus gained popularity and traction through PCC, and was eventually listed on Time's All-Time 100 greatest video games list. In 1976, PCC's [*The Best of Creative Computing Volume 1*](https://www.atariarchives.org/bcc1/showpage.php?page=1) featured Yob's personal recount on the inspiration and development behind The Hunt for Wumpus, dubbed the [Genesis of Wumpus](https://www.atariarchives.org/bcc1/showpage.php?page=247).
+
+#### *Characters*:
+1. Wumpus:
+	- Enemy object
+	- AI movement and action
+	- Kill player method
+2. Player Character:
+	- Controlled by player (text-based actions)
+	- Shoot arrow method
+	- Detect danger method
+3. Crooked Arrow:
+	- Controlled by player (text-based action)
+	- Kill wumpus method
+	- Kill player method
+
+#### *Environment*:
+1. Room with Bats:
+	- Interactable room
+	- Move player method
+2. Room with Pitfall:
+	- Interactable room
+	- Kill player method
+
+#### Classes:
+1. Room:
+	- Numbered ID
+	- Connected paths/rooms
+	- Objects inside
+2. Room with Bats (from Room):
+	- . . Inherited attributes . .
+	- Move player method
+3. Room with Pitfall (from Room):
+	- . . Inherited attributes . .
+	- Kill player method
+4. Crooked Arrow:
+	- Move room method (text-based action)
+	- Kill player method
+	- Kill wumpus method
+
+
+
+## 3. Procedural Programming vs. Object-Oriented Programming
+### Procedural Programming
+
+Procedural Programming is a programming model derived from Structured Programming, and Imperative Programming. Imperative Programming is a simple programming model which aims to show *how* code is run. Structured Programming, which is derived from Imperative Programming, separates code into units based on 3 control structures (Sequence, Selection, Iteration).
+
+Similarly to Structured Programming, Procedural Programming separates code into more general units called subroutines. Inside subroutines, the modular model of Structured Programming is used to reduce the overall amount of code. Subroutines can be called many times within the main loop, using parameters to fit subroutines to specific tasks.
