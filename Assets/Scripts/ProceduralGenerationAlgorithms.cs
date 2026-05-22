@@ -2,11 +2,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
-using JetBrains.Annotations;
 
 public static class ProceduralGenerationAlgorithms
 {
-    
     public static HashSet<Vector2Int> SimpleRandomWalk(Vector2Int startPosition, int walkLength)
     {
         HashSet<Vector2Int> path = new HashSet<Vector2Int>();
@@ -115,15 +113,7 @@ public static class Direction2D
         new Vector2Int(-1, 0) // LEFT
     };
 
-    public static List<Vector2Int> diagonalDirectionsList = new List<Vector2Int>
-    {
-        new Vector2Int(1, 1), // UP-RIGHT
-        new Vector2Int(1, -1), // RIGHT-DOWN
-        new Vector2Int(-1, -1), // DOWN-LEFT
-        new Vector2Int(-1, 1) // LEFT-UP
-    };
-
-    public static List<Vector2Int> eightDirecitonsList = new List<Vector2Int>
+    public static List<Vector2Int> eightDirectionsList = new List<Vector2Int>
     {
         new Vector2Int(0, 1), // UP
         new Vector2Int(1, 1), // UP-RIGHT

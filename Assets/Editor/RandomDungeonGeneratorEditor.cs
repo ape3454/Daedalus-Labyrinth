@@ -18,7 +18,10 @@ public class RandomDungeonGeneratorEditor : Editor
         if (GUILayout.Button("Create Dungeon"))
         {
             generator.GenerateDungeon();
-
+        }
+        if (GUILayout.Button("Regenerate Tiles"))
+        {
+            generator.RegenerateTiles();
         }
     }
 }

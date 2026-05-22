@@ -7,7 +7,7 @@ public static class WallGenerator
     public static void CreateWalls(HashSet<Vector2Int> floorPositions, TilemapVisualiser tilemapVisualiser)
     {
         var basicWallPositions = FindWallsInDirections(floorPositions, Direction2D.cardinalDirectionsList);
-        var cornerWallPositions = FindWallsInDirections(floorPositions, Direction2D.diagonalDirectionsList);
+        var cornerWallPositions = FindWallsInDirections(floorPositions, Direction2D.eightDirectionsList);
         CreateBasicWall(tilemapVisualiser, basicWallPositions, floorPositions);
         CreateCornerWalls(tilemapVisualiser, cornerWallPositions, floorPositions);
     }
@@ -17,7 +17,7 @@ public static class WallGenerator
         foreach (var position in cornerWallPositions)
         {
             string neighboursBinaryType = "";
-            foreach (var direction in Direction2D.eightDirecitonsList)
+            foreach (var direction in Direction2D.eightDirectionsList)
             {
                 var neighbourPosition = position + direction;
                 if (floorPositions.Contains(neighbourPosition))
@@ -29,6 +29,7 @@ public static class WallGenerator
                     neighboursBinaryType += "0";
                 }
             }
+            Debug.Log(position + ":" + neighboursBinaryType);
             tilemapVisualiser.PaintSingleCornerWall(position, neighboursBinaryType);
         }
     }
@@ -50,6 +51,7 @@ public static class WallGenerator
                     neighboursBinaryType += "0";
                 }
             }
+            Debug.Log(position + ":" + neighboursBinaryType);
             tilemapVisualiser.PaintSingleBasicWall(position, neighboursBinaryType);
         }
     }
