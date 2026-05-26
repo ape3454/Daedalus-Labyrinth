@@ -72,7 +72,6 @@ public class TilemapVisualiser : MonoBehaviour
             tile = wallFull;
         }
 
-        print(tile);
         if (tile != null)
             PaintSingleTile(wallTilemap, tile, position);
     }
@@ -135,7 +134,6 @@ public class TilemapVisualiser : MonoBehaviour
             tile = wallFull;
         }
 
-        print(tile);
         if (tile != null)
             PaintSingleTile(wallTilemap, tile, position);
     }

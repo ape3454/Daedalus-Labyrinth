@@ -29,7 +29,6 @@ public static class WallGenerator
                     neighboursBinaryType += "0";
                 }
             }
-            Debug.Log(position + ":" + neighboursBinaryType);
             tilemapVisualiser.PaintSingleCornerWall(position, neighboursBinaryType);
         }
     }
@@ -51,7 +50,6 @@ public static class WallGenerator
                     neighboursBinaryType += "0";
                 }
             }
-            Debug.Log(position + ":" + neighboursBinaryType);
             tilemapVisualiser.PaintSingleBasicWall(position, neighboursBinaryType);
         }
     }
