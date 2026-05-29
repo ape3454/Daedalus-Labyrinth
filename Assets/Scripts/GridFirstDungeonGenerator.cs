@@ -1,9 +1,6 @@
-using NUnit.Framework.Internal;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Linq;
-using Unity.GraphToolkit.Editor;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -123,22 +120,29 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                 Vector2Int node = nodes[Random.Range(0, nodes.Count())];
                 Vector2Int newNode = node;
                 Vector2Int direction = Direction2D.GetRandomCardinalDirection();
+                int nodeDistance = 0;
 
                 if (node == bossPosition) continue;
                 while ((newNode.x < dungeonWidth && newNode.x >= 0) && (newNode.y < dungeonHeight && newNode.y >= 0))
                 {
                     newNode += direction;
                     if (newNode == bossPosition) break;
+                    if (potentialIntersectionCoords.Contains(newNode)) nodeDistance++;
 
                     if (nodes.Contains(newNode))
                     {
                         if (branches.Any(y => y.Contains(node) && y.Contains(newNode))) break;
+                        if (mapCoords.Contains(newNode)) nodeDistance++;
                         HashSet<Vector2Int> corridor = new HashSet<Vector2Int>();
-                        corridor = CreateCorridor(node, newNode, potentialIntersectionCoords, ref intersectionCoords);
-                        Debug.Log(string.Join(" ", corridor));
-                        corridors.UnionWith(corridor);
+
+                        int distanceBetweenNodes = (int)roomCoordToMapCoord(Vector2Int.up).magnitude;
+                        for (int j = 1; j <= nodeDistance; j++)
+                        {
+                            corridor = CreateCorridor(node + (j - 1) * direction * distanceBetweenNodes, node + j * direction * distanceBetweenNodes, potentialIntersectionCoords, ref intersectionCoords);
+                            corridors.UnionWith(corridor);
+                            nodes.Union(intersectionCoords);
+                        }
                         createdCorridors++;
-                        Debug.Log(node + " " + newNode);
                         break;
                     }
                 }
@@ -181,6 +185,7 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 
             int smallestTree = trees.Min(y => y.Count);
             int smallTree = trees.OrderBy(y => y.Count).ElementAt(1).Count();
+            int nodeDistance = 0;
 
             int iteration1 = 0;
             List<Vector2Int> room;
@@ -194,12 +199,19 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 
                 room = trees.FirstOrDefault(y => y.Contains(newNode));
 
+                if (potentialIntersectionCoords.Contains(newNode)) nodeDistance++;
                 if (room == null) continue;
                 if (room.Count != smallestTree && tree.Count > smallTree) break;
 
                 HashSet<Vector2Int> corridor = new HashSet<Vector2Int>();
-                corridor = CreateCorridor(node, newNode, potentialIntersectionCoords, ref intersectionCoords);
-                corridors.UnionWith(corridor);
+                nodeDistance++;
+                int distanceBetweenNodes = (int)roomCoordToMapCoord(Vector2Int.up).magnitude;
+
+                for (int i = 1; i <= nodeDistance; i++)
+                {
+                    corridor = CreateCorridor(node + (i - 1) * direction * distanceBetweenNodes, node + i * direction * distanceBetweenNodes, potentialIntersectionCoords, ref intersectionCoords);
+                    corridors.UnionWith(corridor);
+                }
 
                 if (!trees.Remove(tree))
                 {
