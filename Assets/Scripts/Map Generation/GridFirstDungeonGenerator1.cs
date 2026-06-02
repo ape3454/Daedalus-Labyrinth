@@ -108,6 +108,13 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     private IEnumerable<Vector2Int> CreateExtraCorridors(List<Vector2Int> mapCoords, List<Vector2Int> potentialIntersectionCoords, ref List<Vector2Int> intersectionCoords)
     {
         List<Vector2Int> nodes = mapCoords.Union(intersectionCoords).ToList();
+        List<Vector2Int> exceptions = new List<Vector2Int>() { roomCoordToMapCoord(startPosition), roomCoordToMapCoord(bossPosition) };
+        for (int i = 1; i <= bossCorridorLength; i++) exceptions.Add(roomCoordToMapCoord(new Vector2Int(bossPosition.x, bossPosition.y + i)));
+        foreach (var i in exceptions)
+        {
+            int index = nodes.FindIndex(y => y.x == i.x && y.y == i.y);
+            if (index >= 0) nodes.RemoveAt(index);
+        }
         HashSet<Vector2Int> corridors = new HashSet<Vector2Int>();
         int createdCorridors = 0;
 
@@ -122,11 +129,11 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                 Vector2Int direction = Direction2D.GetRandomCardinalDirection();
                 int nodeDistance = 0;
 
-                if (node == bossPosition) continue;
                 while ((newNode.x < dungeonWidth && newNode.x >= 0) && (newNode.y < dungeonHeight && newNode.y >= 0))
                 {
                     newNode += direction;
-                    if (newNode == bossPosition) break;
+
+                    if (newNode.x == roomCoordToMapCoord(bossPosition).x && newNode.y >= roomCoordToMapCoord(bossPosition).y && newNode.y < roomCoordToMapCoord(bossPosition + Vector2Int.up * (bossCorridorLength + 1)).y) break;
                     if (potentialIntersectionCoords.Contains(newNode)) nodeDistance++;
 
                     if (nodes.Contains(newNode))
