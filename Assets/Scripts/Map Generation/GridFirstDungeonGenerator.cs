@@ -31,6 +31,8 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 
     private List<Vector2Int[]> branches = new List<Vector2Int[]>();
 
+    private List<Vector2Int> potentialIntersectionCoords, intersectionCoords;
+
     protected override void RunProceduralGeneration()
     {
         GridFirstGeneration();
@@ -82,8 +84,8 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             roomCoords.Remove(pos);
         }
 
-        List<Vector2Int> potentialIntersectionCoords = roomCoordToMapCoord(randomOrderRooms.Except(roomCoords).ToList());
-        List<Vector2Int> intersectionCoords = new List<Vector2Int>();
+        potentialIntersectionCoords = roomCoordToMapCoord(randomOrderRooms.Except(roomCoords).ToList());
+        intersectionCoords = new List<Vector2Int>();
         mapCoords = roomCoordToMapCoord(roomCoords);
         
         if (randomWalkRooms)
@@ -94,13 +96,13 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         {
             floor = CreateSimpleRooms(mapCoords);
         } 
-        HashSet<Vector2Int> corridors = ConnectRooms(mapCoords, potentialIntersectionCoords, ref intersectionCoords);
+        HashSet<Vector2Int> corridors = ConnectRooms();
         floor.UnionWith(corridors);
         tilemapVisualiser.PaintFloorTiles(floor);
         WallGenerator.CreateWalls(floor, tilemapVisualiser);
     }
 
-    private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> mapCoords, List<Vector2Int> potentialIntersectionCoords, ref List<Vector2Int> intersectionCoords)
+    private HashSet<Vector2Int> ConnectRooms()
     {
         HashSet<Vector2Int> corridors = new HashSet<Vector2Int>();
         List<List<Vector2Int>> rooms = new List<List<Vector2Int>>();
@@ -110,13 +112,13 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         }
         HashSet<Vector2Int> connections = new HashSet<Vector2Int>();
 
-        connections = JoinRooms(rooms, potentialIntersectionCoords, ref intersectionCoords);
-        connections.UnionWith(CreateExtraCorridors(mapCoords, potentialIntersectionCoords, ref intersectionCoords));
+        connections = JoinRooms(rooms);
+        connections.UnionWith(CreateExtraCorridors());
         
         return connections;
     }
 
-    private IEnumerable<Vector2Int> CreateExtraCorridors(List<Vector2Int> mapCoords, List<Vector2Int> potentialIntersectionCoords, ref List<Vector2Int> intersectionCoords)
+    private IEnumerable<Vector2Int> CreateExtraCorridors()
     {
         List<Vector2Int> nodes = mapCoords.Union(intersectionCoords).ToList();
         List<Vector2Int> exceptions = new List<Vector2Int>() { roomCoordToMapCoord(startPosition), roomCoordToMapCoord(bossPosition) };
@@ -156,7 +158,7 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                         int distanceBetweenNodes = (int)roomCoordToMapCoord(Vector2Int.up).magnitude;
                         for (int j = 1; j <= nodeDistance; j++)
                         {
-                            corridor = CreateCorridor(node + (j - 1) * direction * distanceBetweenNodes, node + j * direction * distanceBetweenNodes, potentialIntersectionCoords, ref intersectionCoords);
+                            corridor = CreateCorridor(node + (j - 1) * direction * distanceBetweenNodes, node + j * direction * distanceBetweenNodes);
                             corridors.UnionWith(corridor);
                             nodes.Union(intersectionCoords);
                         }
@@ -169,12 +171,12 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         return corridors;
     }
 
-    private HashSet<Vector2Int> JoinRooms(List<List<Vector2Int>> roomsList, List<Vector2Int> potentialIntersectionCoords,  ref List<Vector2Int> intersectionCoords)
+    private HashSet<Vector2Int> JoinRooms(List<List<Vector2Int>> roomsList)
     {
         List<List<Vector2Int>> trees = roomsList;
         HashSet<Vector2Int> corridors = new HashSet<Vector2Int>();
 
-        List<Vector2Int> preset = roomCoordToMapCoord(new List<Vector2Int>() { spawnPosition, bossPosition, bossPosition + Vector2Int.up * (bossCorridorLength + 1) });
+        List<Vector2Int> preset = roomCoordToMapCoord(new List<Vector2Int>() { spawnPosition, bossPosition, bossPosition + Vector2Int.up * bossCorridorLength });
         bool presetFinished = false;
 
         int iteration = 0;
@@ -183,9 +185,13 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             iteration++;
             List<Vector2Int> tree;
             Vector2Int node, newNode, direction;
+
+            int smallestTree = trees.Min(y => y.Count);
+            int smallTree = trees.OrderBy(y => y.Count).ElementAt(1).Count();
+
             if (presetFinished)
             {
-                tree = trees[Random.Range(0, trees.Count())];
+                tree = trees[trees.FindIndex(y => y.Count == smallestTree | y.Count == smallTree)];
                 node = tree[Random.Range(0, tree.Count())];
                 newNode = node;
                 direction = Direction2D.GetRandomCardinalDirection();
@@ -194,6 +200,7 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             else
             {
                 tree = new List<Vector2Int>() { preset[0] };
+                //Debug.Log("Preset: " + tree[0]);
                 node = preset[0];
                 newNode = node;
                 direction = (preset[0] == roomCoordToMapCoord(bossPosition)) ? Vector2Int.up : Direction2D.GetRandomCardinalDirection();
@@ -201,17 +208,17 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             }
             if (preset.Count == 0) presetFinished = true;
 
-            int smallestTree = trees.Min(y => y.Count);
-            int smallTree = trees.OrderBy(y => y.Count).ElementAt(1).Count();
             int nodeDistance = 0;
 
-            int iteration1 = 0;
             List<Vector2Int> room;
-            while ((newNode.x < dungeonWidth && newNode.x >= 0) && (newNode.y < dungeonHeight && newNode.y >= 0) && iteration1 < 1000)
+            while ((newNode.x < dungeonWidth && newNode.x >= 0) && (newNode.y < dungeonHeight && newNode.y >= 0))
             {
-                iteration1++;
                 newNode += direction;
-                if (intersectionCoords.Contains(newNode)) break;
+                if (intersectionCoords.Contains(newNode))
+                {
+                    //Debug.Log(string.Join(" ", intersectionCoords));
+                    break;
+                }
                 if (newNode == roomCoordToMapCoord(bossPosition)) break;
                 if (tree.Contains(newNode)) break;
 
@@ -221,13 +228,16 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                 if (room == null) continue;
                 if (room.Count != smallestTree && tree.Count > smallTree) break;
 
+                //printNestedList(trees);
+                //Debug.Log(trees.Count);
+
                 HashSet<Vector2Int> corridor = new HashSet<Vector2Int>();
                 nodeDistance++;
                 int distanceBetweenNodes = (int)roomCoordToMapCoord(Vector2Int.up).magnitude;
 
                 for (int i = 1; i <= nodeDistance; i++)
                 {
-                    corridor = CreateCorridor(node + (i - 1) * direction * distanceBetweenNodes, node + i * direction * distanceBetweenNodes, potentialIntersectionCoords, ref intersectionCoords);
+                    corridor = CreateCorridor(node + (i - 1) * direction * distanceBetweenNodes, node + i * direction * distanceBetweenNodes);
                     corridors.UnionWith(corridor);
                 }
 
@@ -248,11 +258,15 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     private void printNestedList(List<List<Vector2Int>> nestedList)
     {
         string who = "";
-        foreach (var x in nestedList) foreach (var y in x) who += y + " --> ";
+        foreach (var x in nestedList)
+        {
+            foreach (var y in x) who += y + " --> ";
+            who += " |--| ";
+        }
         print(who);
     }
 
-    private HashSet<Vector2Int> CreateCorridor(Vector2Int roomCentre, Vector2Int destination, List<Vector2Int> potentialIntersectionCoords, ref List<Vector2Int> intersectionCoords)
+    private HashSet<Vector2Int> CreateCorridor(Vector2Int roomCentre, Vector2Int destination)
     {
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
         var position = roomCentre;
