@@ -27,12 +27,24 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 
     private int gridWidth, gridHeight;
     private List<Vector2Int> roomCoords, mapCoords;
+    private HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
 
     private List<Vector2Int[]> branches = new List<Vector2Int[]>();
 
     protected override void RunProceduralGeneration()
     {
         GridFirstGeneration();
+    }
+
+    protected override void ResolveTiles()
+    {
+        RenegerateTiles();
+    }
+
+    private void RenegerateTiles()
+    {
+        tilemapVisualiser.PaintFloorTiles(floor);
+        WallGenerator.CreateWalls(floor, tilemapVisualiser);
     }
 
     private void GridFirstGeneration()
@@ -73,7 +85,6 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         List<Vector2Int> potentialIntersectionCoords = roomCoordToMapCoord(randomOrderRooms.Except(roomCoords).ToList());
         List<Vector2Int> intersectionCoords = new List<Vector2Int>();
         mapCoords = roomCoordToMapCoord(roomCoords);
-        HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
         
         if (randomWalkRooms)
         {
