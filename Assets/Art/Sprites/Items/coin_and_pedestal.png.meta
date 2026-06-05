@@ -1,0 +1,998 @@
+fileFormatVersion: 2
+guid: 6035403adb120894ab52e2c0b73f2fbf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -478685754015093379
+    second: coin_and_pedestal_0
+  - first:
+      213: 5990176835201565456
+    second: coin_and_pedestal_1
+  - first:
+      213: -4639146061710773878
+    second: coin_and_pedestal_2
+  - first:
+      213: -3220280484992360225
+    second: coin_and_pedestal_3
+  - first:
+      213: 451781317184520167
+    second: coin_and_pedestal_4
+  - first:
+      213: -6277394580534459314
+    second: coin_and_pedestal_5
+  - first:
+      213: -4481112636743667576
+    second: coin_and_pedestal_6
+  - first:
+      213: 857097284713732170
+    second: coin_and_pedestal_7
+  - first:
+      213: 2398330971360296961
+    second: coin_and_pedestal_8
+  - first:
+      213: 2321764804443674689
+    second: coin_and_pedestal_9
+  - first:
+      213: 6714461866565850895
+    second: coin_and_pedestal_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: coin_and_pedestal_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 127
+        width: 146
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 20, y: -61}
+        - {x: 28, y: -61}
+        - {x: 30, y: -59}
+        - {x: 34, y: -59}
+        - {x: 36, y: -57}
+        - {x: 40, y: -57}
+        - {x: 50, y: -47}
+        - {x: 50, y: -41}
+        - {x: 48, y: -39}
+        - {x: 48, y: -25}
+        - {x: 50, y: -23}
+        - {x: 50, y: -15}
+        - {x: 48, y: -13}
+        - {x: 48, y: 1}
+        - {x: 50, y: 3}
+        - {x: 50, y: 5}
+        - {x: 58, y: 5}
+        - {x: 60, y: 7}
+        - {x: 62, y: 7}
+        - {x: 66, y: 11}
+        - {x: 66, y: 25}
+        - {x: 68, y: 27}
+        - {x: 68, y: 29}
+        - {x: 73, y: 34}
+        - {x: 73, y: 46}
+        - {x: 66, y: 53}
+        - {x: 64, y: 53}
+        - {x: 62, y: 55}
+        - {x: 58, y: 55}
+        - {x: 56, y: 57}
+        - {x: 52, y: 57}
+        - {x: 50, y: 59}
+        - {x: 42, y: 59}
+        - {x: 40, y: 61}
+        - {x: 26, y: 61}
+        - {x: 25, y: 62}
+        - {x: -25, y: 62}
+        - {x: -26, y: 61}
+        - {x: -40, y: 61}
+        - {x: -42, y: 59}
+        - {x: -50, y: 59}
+        - {x: -52, y: 57}
+        - {x: -56, y: 57}
+        - {x: -58, y: 55}
+        - {x: -62, y: 55}
+        - {x: -64, y: 53}
+        - {x: -66, y: 53}
+        - {x: -73, y: 46}
+        - {x: -73, y: 34}
+        - {x: -68, y: 29}
+        - {x: -68, y: 27}
+        - {x: -66, y: 25}
+        - {x: -66, y: 11}
+        - {x: -62, y: 7}
+        - {x: -60, y: 7}
+        - {x: -58, y: 5}
+        - {x: -50, y: 5}
+        - {x: -50, y: 3}
+        - {x: -48, y: 1}
+        - {x: -48, y: -13}
+        - {x: -50, y: -15}
+        - {x: -50, y: -23}
+        - {x: -48, y: -25}
+        - {x: -48, y: -39}
+        - {x: -50, y: -41}
+        - {x: -50, y: -47}
+        - {x: -40, y: -57}
+        - {x: -36, y: -57}
+        - {x: -34, y: -59}
+        - {x: -30, y: -59}
+        - {x: -28, y: -61}
+        - {x: -20, y: -61}
+        - {x: -19, y: -62}
+        - {x: 19, y: -62}
+      physicsShape:
+      - - {x: 50, y: -48}
+        - {x: 50, y: 5}
+        - {x: -50, y: 5}
+        - {x: -50, y: -48}
+        - {x: -33, y: -61}
+        - {x: 34, y: -61}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7de3e8c7dd5b59f0800000000000000
+      internalID: -478685754015093379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin_and_pedestal_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 95
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: -5, y: -11}
+        - {x: 1, y: -11}
+        - {x: 3, y: -9}
+        - {x: 6, y: -12}
+        - {x: 10, y: -12}
+        - {x: 14, y: -8}
+        - {x: 14, y: 10}
+        - {x: 12, y: 12}
+        - {x: 2, y: 12}
+        - {x: 1, y: 11}
+        - {x: -1, y: 11}
+        - {x: -3, y: 9}
+        - {x: -5, y: 9}
+        - {x: -11, y: 3}
+        - {x: -13, y: -1}
+        - {x: -13, y: -3}
+        - {x: -14, y: -4}
+        - {x: -14, y: -10}
+        - {x: -12, y: -12}
+        - {x: -6, y: -12}
+      physicsShape:
+      - - {x: -5, y: -11}
+        - {x: 1, y: -11}
+        - {x: 3, y: -9}
+        - {x: 6, y: -12}
+        - {x: 10, y: -12}
+        - {x: 14, y: -8}
+        - {x: 14, y: 10}
+        - {x: 12, y: 12}
+        - {x: 2, y: 12}
+        - {x: 1, y: 11}
+        - {x: -1, y: 11}
+        - {x: -3, y: 9}
+        - {x: -5, y: 9}
+        - {x: -11, y: 3}
+        - {x: -13, y: -1}
+        - {x: -13, y: -3}
+        - {x: -14, y: -4}
+        - {x: -14, y: -10}
+        - {x: -12, y: -12}
+        - {x: -6, y: -12}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 01386f32812612350800000000000000
+      internalID: 5990176835201565456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin_and_pedestal_2
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 89
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 14, y: -13}
+        - {x: 14, y: 0}
+        - {x: 13, y: 2}
+        - {x: 11, y: 4}
+        - {x: 11, y: 6}
+        - {x: 5, y: 12}
+        - {x: 3, y: 12}
+        - {x: 1, y: 14}
+        - {x: -1, y: 14}
+        - {x: -2, y: 15}
+        - {x: -8, y: 15}
+        - {x: -11, y: 12}
+        - {x: -11, y: -2}
+        - {x: -14, y: -5}
+        - {x: -14, y: -9}
+        - {x: -13, y: -10}
+        - {x: -13, y: -12}
+        - {x: -10, y: -15}
+        - {x: 12, y: -15}
+      physicsShape:
+      - - {x: 14, y: -13}
+        - {x: 14, y: 0}
+        - {x: 13, y: 2}
+        - {x: 11, y: 4}
+        - {x: 11, y: 6}
+        - {x: 5, y: 12}
+        - {x: 3, y: 12}
+        - {x: 1, y: 14}
+        - {x: -1, y: 14}
+        - {x: -2, y: 15}
+        - {x: -8, y: 15}
+        - {x: -11, y: 12}
+        - {x: -11, y: -2}
+        - {x: -14, y: -5}
+        - {x: -14, y: -9}
+        - {x: -13, y: -10}
+        - {x: -13, y: -12}
+        - {x: -10, y: -15}
+        - {x: 12, y: -15}
+      tessellationDetail: 1
+      bones: []
+      spriteID: a81b3927c317e9fb0800000000000000
+      internalID: -4639146061710773878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin_and_pedestal_3
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 77
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 6, y: -12}
+        - {x: 8, y: -10}
+        - {x: 8, y: -8}
+        - {x: 10, y: -6}
+        - {x: 10, y: -2}
+        - {x: 11, y: -1}
+        - {x: 11, y: 7}
+        - {x: 10, y: 8}
+        - {x: 10, y: 10}
+        - {x: 7, y: 13}
+        - {x: 1, y: 13}
+        - {x: 0, y: 12}
+        - {x: -6, y: 12}
+        - {x: -8, y: 10}
+        - {x: -10, y: 10}
+        - {x: -11, y: 9}
+        - {x: -11, y: -1}
+        - {x: -10, y: -2}
+        - {x: -10, y: -4}
+        - {x: -8, y: -6}
+        - {x: -8, y: -8}
+        - {x: -4, y: -12}
+        - {x: -2, y: -12}
+        - {x: -1, y: -13}
+        - {x: 4, y: -13}
+      physicsShape:
+      - - {x: 6, y: -12}
+        - {x: 8, y: -10}
+        - {x: 8, y: -8}
+        - {x: 10, y: -6}
+        - {x: 10, y: -2}
+        - {x: 11, y: -1}
+        - {x: 11, y: 7}
+        - {x: 10, y: 8}
+        - {x: 10, y: 10}
+        - {x: 7, y: 13}
+        - {x: 1, y: 13}
+        - {x: 0, y: 12}
+        - {x: -6, y: 12}
+        - {x: -8, y: 10}
+        - {x: -10, y: 10}
+        - {x: -11, y: 9}
+        - {x: -11, y: -1}
+        - {x: -10, y: -2}
+        - {x: -10, y: -4}
+        - {x: -8, y: -6}
+        - {x: -8, y: -8}
+        - {x: -4, y: -12}
+        - {x: -2, y: -12}
+        - {x: -1, y: -13}
+        - {x: 4, y: -13}
+      tessellationDetail: 1
+      bones: []
+      spriteID: fd068eee5f34f43d0800000000000000
+      internalID: -3220280484992360225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin_and_pedestal_4
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 97
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: -5, y: -9}
+        - {x: 1, y: -9}
+        - {x: 3, y: -7}
+        - {x: 6, y: -10}
+        - {x: 10, y: -10}
+        - {x: 12, y: -8}
+        - {x: 12, y: 10}
+        - {x: 2, y: 10}
+        - {x: 1, y: 9}
+        - {x: -1, y: 9}
+        - {x: -5, y: 7}
+        - {x: -9, y: 3}
+        - {x: -9, y: 1}
+        - {x: -11, y: -1}
+        - {x: -11, y: -3}
+        - {x: -12, y: -4}
+        - {x: -12, y: -10}
+        - {x: -6, y: -10}
+      physicsShape:
+      - - {x: -5, y: -9}
+        - {x: 1, y: -9}
+        - {x: 3, y: -7}
+        - {x: 6, y: -10}
+        - {x: 10, y: -10}
+        - {x: 12, y: -8}
+        - {x: 12, y: 10}
+        - {x: 2, y: 10}
+        - {x: 1, y: 9}
+        - {x: -1, y: 9}
+        - {x: -5, y: 7}
+        - {x: -9, y: 3}
+        - {x: -9, y: 1}
+        - {x: -11, y: -1}
+        - {x: -11, y: -3}
+        - {x: -12, y: -4}
+        - {x: -12, y: -10}
+        - {x: -6, y: -10}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 7eff0fed6bc054600800000000000000
+      internalID: 451781317184520167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin_and_pedestal_5
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 91
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 12, y: -1}
+        - {x: 11, y: 0}
+        - {x: 11, y: 2}
+        - {x: 9, y: 4}
+        - {x: 9, y: 6}
+        - {x: 5, y: 10}
+        - {x: 1, y: 12}
+        - {x: -1, y: 12}
+        - {x: -2, y: 13}
+        - {x: -8, y: 13}
+        - {x: -9, y: 12}
+        - {x: -9, y: -2}
+        - {x: -12, y: -5}
+        - {x: -12, y: -9}
+        - {x: -11, y: -10}
+        - {x: -11, y: -12}
+        - {x: -10, y: -13}
+        - {x: 12, y: -13}
+      physicsShape:
+      - - {x: 12, y: -1}
+        - {x: 11, y: 0}
+        - {x: 11, y: 2}
+        - {x: 9, y: 4}
+        - {x: 9, y: 6}
+        - {x: 5, y: 10}
+        - {x: 1, y: 12}
+        - {x: -1, y: 12}
+        - {x: -2, y: 13}
+        - {x: -8, y: 13}
+        - {x: -9, y: 12}
+        - {x: -9, y: -2}
+        - {x: -12, y: -5}
+        - {x: -12, y: -9}
+        - {x: -11, y: -10}
+        - {x: -11, y: -12}
+        - {x: -10, y: -13}
+        - {x: 12, y: -13}
+      tessellationDetail: 1
+      bones: []
+      spriteID: e44084853e632e8a0800000000000000
+      internalID: -6277394580534459314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin_and_pedestal_6
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 9
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 8, y: -22}
+        - {x: 10, y: -22}
+        - {x: 14, y: -20}
+        - {x: 20, y: -14}
+        - {x: 20, y: -12}
+        - {x: 22, y: -10}
+        - {x: 22, y: -8}
+        - {x: 23, y: -7}
+        - {x: 23, y: 7}
+        - {x: 22, y: 8}
+        - {x: 22, y: 10}
+        - {x: 20, y: 12}
+        - {x: 20, y: 14}
+        - {x: 14, y: 20}
+        - {x: 12, y: 20}
+        - {x: 10, y: 22}
+        - {x: 8, y: 22}
+        - {x: 7, y: 23}
+        - {x: -7, y: 23}
+        - {x: -8, y: 22}
+        - {x: -10, y: 22}
+        - {x: -12, y: 20}
+        - {x: -14, y: 20}
+        - {x: -20, y: 14}
+        - {x: -20, y: 12}
+        - {x: -22, y: 10}
+        - {x: -22, y: 8}
+        - {x: -23, y: 7}
+        - {x: -23, y: -7}
+        - {x: -22, y: -8}
+        - {x: -22, y: -10}
+        - {x: -20, y: -12}
+        - {x: -20, y: -14}
+        - {x: -14, y: -20}
+        - {x: -12, y: -20}
+        - {x: -10, y: -22}
+        - {x: -8, y: -22}
+        - {x: -7, y: -23}
+        - {x: 7, y: -23}
+      physicsShape:
+      - - {x: 8, y: -22}
+        - {x: 10, y: -22}
+        - {x: 14, y: -20}
+        - {x: 20, y: -14}
+        - {x: 20, y: -12}
+        - {x: 22, y: -10}
+        - {x: 22, y: -8}
+        - {x: 23, y: -7}
+        - {x: 23, y: 7}
+        - {x: 22, y: 8}
+        - {x: 22, y: 10}
+        - {x: 20, y: 12}
+        - {x: 20, y: 14}
+        - {x: 14, y: 20}
+        - {x: 12, y: 20}
+        - {x: 10, y: 22}
+        - {x: 8, y: 22}
+        - {x: 7, y: 23}
+        - {x: -7, y: 23}
+        - {x: -8, y: 22}
+        - {x: -10, y: 22}
+        - {x: -12, y: 20}
+        - {x: -14, y: 20}
+        - {x: -20, y: 14}
+        - {x: -20, y: 12}
+        - {x: -22, y: 10}
+        - {x: -22, y: 8}
+        - {x: -23, y: 7}
+        - {x: -23, y: -7}
+        - {x: -22, y: -8}
+        - {x: -22, y: -10}
+        - {x: -20, y: -12}
+        - {x: -20, y: -14}
+        - {x: -14, y: -20}
+        - {x: -12, y: -20}
+        - {x: -10, y: -22}
+        - {x: -8, y: -22}
+        - {x: -7, y: -23}
+        - {x: 7, y: -23}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 88031608cc3efc1c0800000000000000
+      internalID: -4481112636743667576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin_and_pedestal_7
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 9
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 2, y: -10}
+        - {x: 4, y: -10}
+        - {x: 6, y: -8}
+        - {x: 8, y: -8}
+        - {x: 14, y: -2}
+        - {x: 16, y: 2}
+        - {x: 16, y: 4}
+        - {x: 17, y: 5}
+        - {x: 17, y: 9}
+        - {x: 15, y: 11}
+        - {x: -7, y: 11}
+        - {x: -12, y: 6}
+        - {x: -12, y: 2}
+        - {x: -17, y: -3}
+        - {x: -17, y: -7}
+        - {x: -13, y: -11}
+        - {x: 1, y: -11}
+      physicsShape:
+      - - {x: 2, y: -10}
+        - {x: 4, y: -10}
+        - {x: 6, y: -8}
+        - {x: 8, y: -8}
+        - {x: 14, y: -2}
+        - {x: 16, y: 2}
+        - {x: 16, y: 4}
+        - {x: 17, y: 5}
+        - {x: 17, y: 9}
+        - {x: 15, y: 11}
+        - {x: -7, y: 11}
+        - {x: -12, y: 6}
+        - {x: -12, y: 2}
+        - {x: -17, y: -3}
+        - {x: -17, y: -7}
+        - {x: -13, y: -11}
+        - {x: 1, y: -11}
+      tessellationDetail: 1
+      bones: []
+      spriteID: a485059707505eb00800000000000000
+      internalID: 857097284713732170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin_and_pedestal_8
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 11
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 3, y: -12}
+        - {x: 6, y: -12}
+        - {x: 6, y: -11}
+        - {x: 8, y: -10}
+        - {x: 8, y: -7}
+        - {x: 10, y: -6}
+        - {x: 10, y: -1}
+        - {x: 11, y: 0}
+        - {x: 12, y: 0}
+        - {x: 12, y: 6}
+        - {x: 10, y: 7}
+        - {x: 10, y: 10}
+        - {x: 9, y: 10}
+        - {x: 8, y: 12}
+        - {x: 7, y: 12}
+        - {x: 6, y: 14}
+        - {x: 2, y: 14}
+        - {x: 1, y: 12}
+        - {x: -6, y: 12}
+        - {x: -7, y: 10}
+        - {x: -10, y: 10}
+        - {x: -10, y: 9}
+        - {x: -12, y: 8}
+        - {x: -12, y: 0}
+        - {x: -10, y: -1}
+        - {x: -10, y: -4}
+        - {x: -8, y: -5}
+        - {x: -8, y: -8}
+        - {x: -7, y: -8}
+        - {x: -6, y: -10}
+        - {x: -5, y: -10}
+        - {x: -4, y: -12}
+        - {x: -1, y: -12}
+        - {x: 0, y: -13}
+        - {x: 0, y: -14}
+        - {x: 2, y: -14}
+      physicsShape:
+      - - {x: 3, y: -12}
+        - {x: 6, y: -12}
+        - {x: 6, y: -11}
+        - {x: 8, y: -10}
+        - {x: 8, y: -7}
+        - {x: 10, y: -6}
+        - {x: 10, y: -1}
+        - {x: 11, y: 0}
+        - {x: 12, y: 0}
+        - {x: 12, y: 6}
+        - {x: 10, y: 7}
+        - {x: 10, y: 10}
+        - {x: 9, y: 10}
+        - {x: 8, y: 12}
+        - {x: 7, y: 12}
+        - {x: 6, y: 14}
+        - {x: 2, y: 14}
+        - {x: 1, y: 12}
+        - {x: -6, y: 12}
+        - {x: -7, y: 10}
+        - {x: -10, y: 10}
+        - {x: -10, y: 9}
+        - {x: -12, y: 8}
+        - {x: -12, y: 0}
+        - {x: -10, y: -1}
+        - {x: -10, y: -4}
+        - {x: -8, y: -5}
+        - {x: -8, y: -8}
+        - {x: -7, y: -8}
+        - {x: -6, y: -10}
+        - {x: -5, y: -10}
+        - {x: -4, y: -12}
+        - {x: -1, y: -12}
+        - {x: 0, y: -13}
+        - {x: 0, y: -14}
+        - {x: 2, y: -14}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 1008fb1cf45984120800000000000000
+      internalID: 2398330971360296961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin_and_pedestal_9
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 11
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 8, y: -20}
+        - {x: 10, y: -20}
+        - {x: 12, y: -18}
+        - {x: 14, y: -18}
+        - {x: 18, y: -14}
+        - {x: 18, y: -12}
+        - {x: 20, y: -10}
+        - {x: 20, y: -8}
+        - {x: 21, y: -7}
+        - {x: 21, y: 7}
+        - {x: 20, y: 8}
+        - {x: 20, y: 10}
+        - {x: 18, y: 12}
+        - {x: 18, y: 14}
+        - {x: 14, y: 18}
+        - {x: 12, y: 18}
+        - {x: 10, y: 20}
+        - {x: 8, y: 20}
+        - {x: 7, y: 21}
+        - {x: -7, y: 21}
+        - {x: -8, y: 20}
+        - {x: -10, y: 20}
+        - {x: -12, y: 18}
+        - {x: -14, y: 18}
+        - {x: -18, y: 14}
+        - {x: -18, y: 12}
+        - {x: -20, y: 10}
+        - {x: -20, y: 8}
+        - {x: -21, y: 7}
+        - {x: -21, y: -7}
+        - {x: -20, y: -8}
+        - {x: -20, y: -10}
+        - {x: -18, y: -14}
+        - {x: -14, y: -18}
+        - {x: -12, y: -18}
+        - {x: -10, y: -20}
+        - {x: -8, y: -20}
+        - {x: -7, y: -21}
+        - {x: 7, y: -21}
+      physicsShape:
+      - - {x: 8, y: -20}
+        - {x: 10, y: -20}
+        - {x: 12, y: -18}
+        - {x: 14, y: -18}
+        - {x: 18, y: -14}
+        - {x: 18, y: -12}
+        - {x: 20, y: -10}
+        - {x: 20, y: -8}
+        - {x: 21, y: -7}
+        - {x: 21, y: 7}
+        - {x: 20, y: 8}
+        - {x: 20, y: 10}
+        - {x: 18, y: 12}
+        - {x: 18, y: 14}
+        - {x: 14, y: 18}
+        - {x: 12, y: 18}
+        - {x: 10, y: 20}
+        - {x: 8, y: 20}
+        - {x: 7, y: 21}
+        - {x: -7, y: 21}
+        - {x: -8, y: 20}
+        - {x: -10, y: 20}
+        - {x: -12, y: 18}
+        - {x: -14, y: 18}
+        - {x: -18, y: 14}
+        - {x: -18, y: 12}
+        - {x: -20, y: 10}
+        - {x: -20, y: 8}
+        - {x: -21, y: 7}
+        - {x: -21, y: -7}
+        - {x: -20, y: -8}
+        - {x: -20, y: -10}
+        - {x: -18, y: -14}
+        - {x: -14, y: -18}
+        - {x: -12, y: -18}
+        - {x: -10, y: -20}
+        - {x: -8, y: -20}
+        - {x: -7, y: -21}
+        - {x: 7, y: -21}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 1489ed4d9c0983020800000000000000
+      internalID: 2321764804443674689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin_and_pedestal_10
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 11
+        width: 30
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 2, y: -8}
+        - {x: 4, y: -8}
+        - {x: 6, y: -6}
+        - {x: 8, y: -6}
+        - {x: 12, y: -2}
+        - {x: 12, y: 0}
+        - {x: 14, y: 2}
+        - {x: 14, y: 4}
+        - {x: 15, y: 5}
+        - {x: 15, y: 9}
+        - {x: -7, y: 9}
+        - {x: -10, y: 6}
+        - {x: -10, y: 2}
+        - {x: -12, y: 0}
+        - {x: -12, y: -2}
+        - {x: -14, y: -2}
+        - {x: -15, y: -3}
+        - {x: -15, y: -7}
+        - {x: -13, y: -9}
+        - {x: 1, y: -9}
+      physicsShape:
+      - - {x: 2, y: -8}
+        - {x: 4, y: -8}
+        - {x: 6, y: -6}
+        - {x: 8, y: -6}
+        - {x: 12, y: -2}
+        - {x: 12, y: 0}
+        - {x: 14, y: 2}
+        - {x: 14, y: 4}
+        - {x: 15, y: 5}
+        - {x: 15, y: 9}
+        - {x: -7, y: 9}
+        - {x: -10, y: 6}
+        - {x: -10, y: 2}
+        - {x: -12, y: 0}
+        - {x: -12, y: -2}
+        - {x: -14, y: -2}
+        - {x: -15, y: -3}
+        - {x: -15, y: -7}
+        - {x: -13, y: -9}
+        - {x: 1, y: -9}
+      tessellationDetail: 1
+      bones: []
+      spriteID: f07509e2e7f8e2d50800000000000000
+      internalID: 6714461866565850895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a5b211839e2e81c4baf9086f12846edd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      coin_and_pedestal_0: -478685754015093379
+      coin_and_pedestal_1: 5990176835201565456
+      coin_and_pedestal_10: 6714461866565850895
+      coin_and_pedestal_2: -4639146061710773878
+      coin_and_pedestal_3: -3220280484992360225
+      coin_and_pedestal_4: 451781317184520167
+      coin_and_pedestal_5: -6277394580534459314
+      coin_and_pedestal_6: -4481112636743667576
+      coin_and_pedestal_7: 857097284713732170
+      coin_and_pedestal_8: 2398330971360296961
+      coin_and_pedestal_9: 2321764804443674689
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
