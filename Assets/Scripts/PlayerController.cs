@@ -1,13 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class PlayerController : MonoBehaviour
 {
+    // Control
     public InputAction MoveAction;
     Rigidbody2D rigidbody2d;
     Vector2 move;
     public float speed = 5.0f;
+
+    // Health
+    public int maxHealth = 3;
 
     Animator animator;
     Vector2 moveDirection = new Vector2(1, 0);
@@ -18,6 +23,11 @@ public class PlayerController : MonoBehaviour
         MoveAction.Enable();
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+    }
+
+    public void runReset()
+    {
+        
     }
 
     // Update is called once per frame

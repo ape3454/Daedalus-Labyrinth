@@ -2,11 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 {
+    GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+    }
+
+
     [SerializeField]
     private int roomWidth = 4, roomHeight = 4;
     [SerializeField]
@@ -26,12 +35,16 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     private bool randomWalkRooms = false;
 
     private int gridWidth, gridHeight;
-    private List<Vector2Int> roomCoords, mapCoords;
+    public List<Vector2Int> roomCoords;
+    private List<Vector2Int> mapCoords;
     private HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
 
-    private List<Vector2Int[]> branches = new List<Vector2Int[]>();
+    public List<Vector2Int[]> connections { get { return branches; } }
+    List<Vector2Int[]> branches = new List<Vector2Int[]>();
 
     private List<Vector2Int> potentialIntersectionCoords, intersectionCoords;
+
+    public Dictionary<Vector2Int, string> importantTiles;
 
     protected override void RunProceduralGeneration()
     {
@@ -54,6 +67,24 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         HashSet<Vector2Int> gridPositions = new HashSet<Vector2Int>();
 
         CreateRooms(gridPositions);
+        GenerateMap();
+    }
+
+    private void GenerateMap()
+    {
+        importantTiles = new Dictionary<Vector2Int, string>();
+
+        Vector2Int mapSpawnEdge = roomCoordToMapCoord(spawnPosition) + Vector2Int.down * Mathf.FloorToInt(roomHeight / 2);
+        importantTiles.Add(mapSpawnEdge, "spawn");
+
+        //importantTiles.Add(mapSpawnEdge + Vector2Int.down, "entranceDoor");
+
+        Vector2Int mapBossSpawn = roomCoordToMapCoord(bossPosition);
+        importantTiles.Add(mapBossSpawn, "bossSpawn");
+
+        //Add corridor
+
+        tilemapVisualiser.PaintAlternativeTiles(importantTiles);
     }
 
     private void CreateRooms(HashSet<Vector2Int> roomPositions)
@@ -176,13 +207,15 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         List<List<Vector2Int>> trees = roomsList;
         HashSet<Vector2Int> corridors = new HashSet<Vector2Int>();
 
-        List<Vector2Int> preset = roomCoordToMapCoord(new List<Vector2Int>() { spawnPosition, bossPosition, bossPosition + Vector2Int.up * bossCorridorLength });
+        List<Vector2Int> preset = roomCoordToMapCoord(new List<Vector2Int>() { spawnPosition, bossPosition, bossPosition + Vector2Int.up * (bossCorridorLength + 1) });
         bool presetFinished = false;
 
         int iteration = 0;
         while (trees.Count > 1 && iteration < 100000)
         {
             iteration++;
+            if (iteration == 100000) gameManager.RestartScene();
+
             List<Vector2Int> tree;
             Vector2Int node, newNode, direction;
 
@@ -219,7 +252,8 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                     //Debug.Log(string.Join(" ", intersectionCoords));
                     break;
                 }
-                if (newNode == roomCoordToMapCoord(bossPosition)) break;
+
+                if (newNode.x == roomCoordToMapCoord(bossPosition).x && newNode.y >= roomCoordToMapCoord(bossPosition).y && newNode.y < roomCoordToMapCoord(bossPosition + Vector2Int.up * (bossCorridorLength + 1)).y && presetFinished) break;
                 if (tree.Contains(newNode)) break;
 
                 room = trees.FirstOrDefault(y => y.Contains(newNode));
@@ -255,7 +289,7 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         return corridors;
     }
 
-    private void printNestedList(List<List<Vector2Int>> nestedList)
+    public void printNestedList(List<List<Vector2Int>> nestedList)
     {
         string who = "";
         foreach (var x in nestedList)
@@ -317,9 +351,9 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
         foreach (var room in roomsList)
         {
-            for (int col = room.x - (int)Math.Floor((decimal)(roomWidth / 2)); col <= room.x + (int)Math.Floor((decimal)(roomWidth / 2)); col++)
+            for (int col = room.x - Mathf.FloorToInt(roomWidth / 2); col <= room.x + Mathf.FloorToInt(roomWidth / 2); col++)
             {
-                for (int row = room.y - (int)Math.Floor((decimal)(roomHeight / 2)); row <= room.y + (int)Math.Floor((decimal)(roomHeight / 2)); row++)
+                for (int row = room.y - Mathf.FloorToInt(roomHeight / 2); row <= room.y + Mathf.FloorToInt(roomHeight / 2); row++)
                 {
                     Vector2Int position = new Vector2Int(col, row);
                     floor.Add(position);

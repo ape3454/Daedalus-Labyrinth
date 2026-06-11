@@ -4,26 +4,52 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
+
+[System.Serializable]
+public class WeightedTileSet
+{
+    public List<string> names;
+    public List<TileBase> tiles;
+    public List<float> weighting;
+}
 
 
 public class TilemapVisualiser : MonoBehaviour
 {
     [SerializeField]
-    private Tilemap floorTilemap, wallTilemap, backgroundTilemap;
+    private Tilemap floorTilemap, wallTilemap, backgroundTilemap, tangibleTilemap;
     [SerializeField]
-    private TileBase floorTile, wallTop, wallSideRight, wallSideLeft, wallBottom, wallFull,
+    private TileBase wallTop, wallSideRight, wallSideLeft, wallBottom, wallFull,
         wallInnerCornerDownLeft, wallInnerCornerDownRight, wallInnerCornerUpRight, wallInnerCornerUpLeft,
         wallDiagonalCornerDownRight, wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft;
+
     [SerializeField]
-    private TileBase[] wallDCDLGradients;
-    [SerializeField]
-    private TileBase[] wallBtmGradients;
-    [SerializeField]
-    private TileBase[] wallDCDRGradients;
+    private WeightedTileSet alternativeFloorTiles, alternativeWallTiles, alternativeTangibleTiles;
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
     {
-        PaintTiles(floorPositions, floorTilemap, floorTile);
+        PaintTiles(floorPositions, floorTilemap, alternativeFloorTiles.tiles, alternativeFloorTiles.weighting);
+    }
+
+    public void PaintAlternativeTiles(Dictionary<Vector2Int, string> alternativeTiles)
+    {
+        foreach (var (pos, type) in alternativeTiles)
+        {
+            if (alternativeWallTiles.names.Contains(type))
+            {
+                PaintSingleTile(wallTilemap, alternativeWallTiles.tiles[alternativeWallTiles.names.IndexOf(type)], pos);
+            }
+            else if (alternativeTangibleTiles.names.Contains(type))
+            {
+                PaintSingleTile(wallTilemap, alternativeTangibleTiles.tiles[alternativeTangibleTiles.names.IndexOf(type)], pos);
+            }
+            else if (alternativeFloorTiles.names.Contains(type))
+            {
+                PaintSingleTile(wallTilemap, alternativeFloorTiles.tiles[alternativeFloorTiles.names.IndexOf(type)], pos);
+            }
+        }
+
     }
 
     private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)
@@ -31,6 +57,27 @@ public class TilemapVisualiser : MonoBehaviour
         foreach (var position in positions)
         {
             PaintSingleTile(tilemap, tile, position);
+        }
+    }
+
+    private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, IEnumerable<TileBase> tiles)
+    {
+        foreach (var position in positions)
+        {
+            PaintSingleTile(tilemap, tiles.ElementAt(Random.Range(0, tiles.Count())), position);
+        }
+    }
+
+    private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, IEnumerable<TileBase> tiles, List<float> weighting)
+    {
+        List<float> cumulativeWeight = new List<float>();
+        for (int i = 0; i < weighting.Count; i++) cumulativeWeight.Add(cumulativeWeight.ElementAtOrDefault(i - 1) + weighting[i]);
+        float randomWeight;
+
+        foreach (var position in positions)
+        {
+            randomWeight = Random.Range(0, cumulativeWeight[^1]);
+            PaintSingleTile(tilemap, tiles.ElementAt(cumulativeWeight.FindIndex(y => randomWeight <= y)), position);
         }
     }
 
