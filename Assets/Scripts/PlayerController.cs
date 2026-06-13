@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
-using System.Runtime.InteropServices.WindowsRuntime;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     Animator animator;
     Vector2 moveDirection = new Vector2(1, 0);
+
+    public List<GameObject> inventory = new List<GameObject>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

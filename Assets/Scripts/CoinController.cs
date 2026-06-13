@@ -2,12 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
-public class CoinController : MonoBehaviour
+public class CoinManager : MonoBehaviour
 {
     GameManager gameManager;
     List<Vector2Int> coinCoords;
+    [SerializeField]
+    private List<GameObject> coinFragments;
+    [SerializeField]
+    private GameObject minorPedestal;
+    private List<GameObject> fragments = new List<GameObject>();
+    
 
     private void Awake()
     {
@@ -18,6 +25,11 @@ public class CoinController : MonoBehaviour
     {
         coinCoords = GetCoinCoords();
         Debug.Log(string.Join(" ", coinCoords));
+        for (int i = 0; i < 4; i++)
+        {
+            Vector2Int position = gameManager.roomCoordToMapCoord(coinCoords[i]);
+            fragments.Add(Instantiate(coinFragments[i], new Vector3(position.x, position.y, 0), Quaternion.identity, this.transform));
+        }
     }
 
     private List<Vector2Int> GetCoinCoords()
@@ -26,7 +38,6 @@ public class CoinController : MonoBehaviour
         List<Vector2Int> possibleCoords = new List<Vector2Int>();
 
         HashSet<Vector2Int> deadEnds = gameManager.FindIntersectionsByConnections(1).Except(new HashSet<Vector2Int>() { gameManager.spawnCoord, gameManager.bossCoord }).ToHashSet();
-
         List<Vector2Int[]> tooClose = new List<Vector2Int[]>();
         List<Vector2Int[]> temporaryTooClose;
         List<Vector2Int> temporaryPossibleCoords = new List<Vector2Int>();
@@ -41,11 +52,16 @@ public class CoinController : MonoBehaviour
         do
         {
             iteration++;
-            if (iteration == 1000) Debug.Log("What?");
+            if (iteration == 100) Debug.Log("What?");
 
             if (possibleCoords.Count <= 4)
             {
-                if (connectingMin > 4) gameManager.RestartScene();
+                if (connectingMin > 4)
+                {
+                    Debug.Log("how");
+                    //gameManager.RestartScene();
+                    break;
+                }
 
                 HashSet<Vector2Int> intersectionRooms = gameManager.FindIntersectionsByConnections(connectingMin);
                 (temp1, temp2) = CheckPositions(intersectionRooms);
@@ -66,41 +82,53 @@ public class CoinController : MonoBehaviour
                 temporaryTooClose.AddRange(tooClose.FindAll(y => y.Contains(position)));
             }
             connectingMin2++;
-
+            
             if (temporaryPossibleCoords.Count > 4)
             {
                 if (possibleCoords.Count < 4) possibleCoords.Union(temporaryPossibleCoords);
-                List<List<Vector2Int>> permutations = GetPermutations(possibleCoords, 4);
-
+                Debug.Log(string.Join(", ", possibleCoords));
+                List<List<Vector2Int>> permutations = GetPermutations(possibleCoords);
+                gameManager.printNestedList(permutations);
+                
                 List<(List<Vector2Int>, int)> highestScoredPerms = new List<(List<Vector2Int>, int)>() { (new List<Vector2Int>(), 0) };
-                foreach (List<Vector2Int> perm in permutations)
+                /*foreach (List<Vector2Int> perm in permutations)
                 {
                     int score = 0;
                     foreach (Vector2Int pos in perm)
                     {
-                        foreach (Vector2Int position in perm)
+                        foreach (Vector2Int position in perm.Except(new List<Vector2Int>() { pos }))
                         {
-                            score += gameManager.GetShortestPath(pos, position).Count;
+                            score += (int)Mathf.Pow(gameManager.GetShortestPath(pos, position).Count, 2);
                         }
+                        score += (int)Mathf.Pow((pos - new Vector2Int(0, 0)).magnitude, 2);
+                        score += (int)Mathf.Pow((pos - new Vector2Int(0, gameManager.gridHeight)).magnitude, 2);
+                        score += (int)Mathf.Pow((pos - new Vector2Int(gameManager.gridWidth, gameManager.gridHeight)).magnitude, 2);
+                        score += (int)Mathf.Pow((pos - new Vector2Int(gameManager.gridWidth, 0)).magnitude, 2);
                     }
                     if (score > highestScoredPerms[0].Item2) highestScoredPerms = new List<(List<Vector2Int>, int)>() { (perm, score) };
                 }
-
-                coords = highestScoredPerms[Random.Range(0, highestScoredPerms.Count - 1)].Item1;
+                coords = highestScoredPerms[Random.Range(0, highestScoredPerms.Count - 1)].Item1;*/
+                break;
             }
         }
-        while (coords.Count != 4 && iteration < 1000);
+        while (coords.Count != 4 && iteration < 100);
         return coords;
     }
 
-    private List<List<Vector2Int>> GetPermutations(List<Vector2Int> list, int numberOfItems)
-    {
+    private List<List<Vector2Int>> GetPermutations(List<Vector2Int> list) // need to get combinations instead bc permutations are too many
+    { // even combinations are too many need to shorten it down a little
         List<List<Vector2Int>> perms = new List<List<Vector2Int>>();
-        if (list.Count != 0)
+        foreach (var item in list)
         {
-            foreach (Vector2Int item in list)
+            foreach (var item1 in list.Except(new List<Vector2Int>() { item }))
             {
-                perms.AddRange(GetPermutations(list.Except(new List<Vector2Int>() { item }).ToList(), numberOfItems));
+                foreach (var item2 in list.Except(new List<Vector2Int>() { item, item1 }))
+                {
+                    foreach (var item3 in list.Except(new List<Vector2Int>() { item, item1, item2 }))
+                    {
+                        perms.Add(new List<Vector2Int>() { item, item1, item2, item3 });
+                    }
+                }
             }
         }
         return perms;
@@ -109,14 +137,15 @@ public class CoinController : MonoBehaviour
     private (List<Vector2Int>, List<Vector2Int[]>) CheckPositions(HashSet<Vector2Int> deadEnds)
     {
         List<Vector2Int> coords = new List<Vector2Int>();
+        List<Vector2Int[]> tooClose = new List<Vector2Int[]>();
+
         foreach (Vector2Int position in deadEnds)
         {
             int toSpawn = gameManager.GetShortestPath(position, gameManager.spawnCoord).Count;
             int toBoss = gameManager.GetShortestPath(position, gameManager.bossCoord).Count;
-            if (toSpawn < 7 | toBoss < 4) coords.Add(position);
+            if (toSpawn > 7 | toBoss > 4) coords.Add(position);
         }
 
-        List<Vector2Int[]> tooClose = new List<Vector2Int[]>();
         foreach (Vector2Int position in coords)
         {
             foreach (Vector2Int other in coords)

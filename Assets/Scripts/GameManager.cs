@@ -1,37 +1,59 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public InputAction reset;
+    public InputActionReference re;
+
     private GridFirstDungeonGenerator dungeonGenerator;
-    private CoinController coinController;
+    private CoinManager coinController;
 
     public PlayerController player;
 
+    [HideInInspector]
     public List<Vector2Int> spawnToBoss;
+    [HideInInspector]
     public HashSet<Vector2Int> roomsList;
     private List<Vector2Int[]> connections;
 
+    [HideInInspector]
     public Vector2Int spawnCoord, bossCoord;
+    [HideInInspector]
+    public int gridWidth, gridHeight;
+
+    public void ResetElements()
+    {
+        Stage2();
+        Stage3();
+    }
 
     public void RestartScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         Debug.Log("Restarting Scene...");
     }
 
     private void Awake()
     {
         dungeonGenerator = this.GetComponent<GridFirstDungeonGenerator>();
-        coinController = GameObject.Find("CoinFragments").GetComponent<CoinController>();
+        coinController = GameObject.Find("CoinFragments").GetComponent<CoinManager>();
     }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
+    {
+        NewScene();
+        reset.Enable();
+    }
+
+    void NewScene()
     {
         Stage1();
         Stage2();
@@ -50,6 +72,8 @@ public class GameManager : MonoBehaviour
         bossCoord = dungeonGenerator.bossPosition;
         connections = dungeonGenerator.connections;
         roomsList = dungeonGenerator.roomCoords.ToHashSet();
+        gridWidth = dungeonGenerator.gridWidth;
+        gridHeight = dungeonGenerator.gridHeight;
         return;
     }
 
@@ -73,10 +97,10 @@ public class GameManager : MonoBehaviour
         List<Vector2Int> currentPath;
 
         int iteration = 0;
-        while (iteration < 1000)
+        while (iteration < 10000)
         {
             iteration++;
-            if (iteration == 1000)
+            if (iteration == 10000)
             {
                 Debug.Log("wow");
                 Debug.Log(validPaths.Count);
@@ -87,7 +111,7 @@ public class GameManager : MonoBehaviour
                 currentPath = paths.First(y => y.Count == paths.Min(x => x.Count));
                 if (validPaths.Count != 0 && currentPath.Count > validPaths.Min(y => y.Count)) break;
             }
-            catch (InvalidOperationException) // When "Sequence contains no matching element" on 84 (paths.Count == 0)
+            catch (InvalidOperationException) // When "Sequence contains no matching element" on 96 (paths.Count == 0)
             {
                 break;
             }
@@ -127,13 +151,46 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    bool pressed = false;
     void Update()
     {
-        
+        if (reset.WasPressedThisFrame())
+        {
+            Debug.Log("this happened");
+            float value = reset.ReadValue<float>();
+            if (value < 0)
+            {
+                Debug.Log("pressed");
+                pressed = true;
+                RestartScene();
+            }
+            else if (value > 0)
+            {
+                Debug.Log("released");
+                pressed = false;
+            }
+        }
     }
 
-    void ReloadScene()
+    public List<Vector2Int> roomCoordToMapCoord(List<Vector2Int> roomCoords)
     {
-        dungeonGenerator.RegenerateTiles();
+        return dungeonGenerator.roomCoordToMapCoord(roomCoords);
+    }
+
+    public Vector2Int roomCoordToMapCoord(Vector2Int roomCoord)
+    {
+        return dungeonGenerator.roomCoordToMapCoord(roomCoord);
+    }
+
+    public void printNestedList(List<List<Vector2Int>> nestedList)
+    {
+        string who = "";
+        foreach (var x in nestedList)
+        {
+            foreach (var y in x) who += y + " --> ";
+            who += " |--| ";
+        }
+        print(who);
     }
 }
