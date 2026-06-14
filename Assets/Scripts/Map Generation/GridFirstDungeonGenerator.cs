@@ -145,7 +145,7 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     private IEnumerable<Vector2Int> CreateExtraCorridors()
     {
         List<Vector2Int> nodes = mapCoords.Union(intersectionCoords).ToList();
-        List<Vector2Int> exceptions = roomCoordToMapCoord(new List<Vector2Int>() { startPosition, bossPosition });
+        List<Vector2Int> exceptions = roomCoordToMapCoord(new List<Vector2Int>() { spawnPosition, bossPosition });
         for (int i = 1; i <= bossCorridorLength; i++) exceptions.Add(roomCoordToMapCoord(new Vector2Int(bossPosition.x, bossPosition.y + i)));
         nodes.RemoveAll(y => exceptions.Contains(y));
         HashSet<Vector2Int> corridors = new HashSet<Vector2Int>();
@@ -167,6 +167,7 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                     newNode += direction;
 
                     if (newNode.x == roomCoordToMapCoord(bossPosition).x && newNode.y >= roomCoordToMapCoord(bossPosition).y && newNode.y < roomCoordToMapCoord(bossPosition + Vector2Int.up * (bossCorridorLength + 1)).y) break;
+                    if (newNode == roomCoordToMapCoord(spawnPosition)) break;
                     if (potentialIntersectionCoords.Contains(newNode)) nodeDistance++;
 
                     if (nodes.Contains(newNode))
@@ -200,11 +201,15 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         bool presetFinished = false;
 
         int iteration = 0;
-        while (trees.Count > 1 && iteration < 100000)
+        while (trees.Count > 1 && iteration < 10000)
         {
             iteration++;
-            if (iteration == 100000) Debug.Log("How did this happen");//gameManager.RestartScene();
-
+            if (iteration == 10000)
+            {
+                Debug.Log("wow");
+                gameManager.RestartScene();
+                break;
+            }
             List<Vector2Int> tree;
             Vector2Int node, newNode, direction;
 
@@ -217,7 +222,7 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                 node = tree[Random.Range(0, tree.Count())];
                 newNode = node;
                 direction = Direction2D.GetRandomCardinalDirection();
-                if (node == roomCoordToMapCoord(bossPosition)) continue;
+                if (node == roomCoordToMapCoord(bossPosition) | node == roomCoordToMapCoord(spawnPosition)) continue;
             }
             else
             {
@@ -225,7 +230,7 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                 //Debug.Log("Preset: " + tree[0]);
                 node = preset[0];
                 newNode = node;
-                direction = (preset[0] == roomCoordToMapCoord(bossPosition)) ? Vector2Int.up : Direction2D.GetRandomCardinalDirection();
+                direction = Vector2Int.up;
                 preset.RemoveAt(0);
             }
             if (preset.Count == 0) presetFinished = true;
@@ -239,6 +244,7 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                 if (intersectionCoords.Contains(newNode)) break;
 
                 if (newNode.x == roomCoordToMapCoord(bossPosition).x && newNode.y >= roomCoordToMapCoord(bossPosition).y && newNode.y < roomCoordToMapCoord(bossPosition + Vector2Int.up * (bossCorridorLength + 1)).y && presetFinished) break;
+                if (newNode == roomCoordToMapCoord(spawnPosition)) break;
                 if (tree.Contains(newNode)) break;
 
                 room = trees.FirstOrDefault(y => y.Contains(newNode));
@@ -266,7 +272,7 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                 trees.Remove(room);
                 trees.Add(tree);
                 break;
-            }
+            }   
         }
         return corridors;
     }

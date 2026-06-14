@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class CoinManager : MonoBehaviour
@@ -11,9 +10,11 @@ public class CoinManager : MonoBehaviour
     List<Vector2Int> coinCoords;
     [SerializeField]
     private List<GameObject> coinFragments;
+    private List<GameObject> fragments = new List<GameObject>();
+
     [SerializeField]
     private GameObject minorPedestal;
-    private List<GameObject> fragments = new List<GameObject>();
+    private List<GameObject> pedestals = new List<GameObject>();
     
 
     private void Awake()
@@ -28,7 +29,10 @@ public class CoinManager : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             Vector2Int position = gameManager.roomCoordToMapCoord(coinCoords[i]);
-            fragments.Add(Instantiate(coinFragments[i], new Vector3(position.x, position.y, 0), Quaternion.identity, this.transform));
+            pedestals.Add(Instantiate(minorPedestal, new Vector3(position.x + 0.5f, position.y - 0.5f, 0), Quaternion.identity, this.transform));
+            pedestals[i].name = minorPedestal.name;
+            fragments.Add(Instantiate(coinFragments[i], new Vector3(position.x + 0.5f, position.y, -1), Quaternion.identity, this.transform));
+            fragments[i].name = coinFragments[i].name;
         }
     }
 
@@ -86,28 +90,34 @@ public class CoinManager : MonoBehaviour
             if (temporaryPossibleCoords.Count > 4)
             {
                 if (possibleCoords.Count < 4) possibleCoords.Union(temporaryPossibleCoords);
-                Debug.Log(string.Join(", ", possibleCoords));
-                List<List<Vector2Int>> permutations = GetPermutations(possibleCoords);
-                gameManager.printNestedList(permutations);
+                List<List<Vector2Int>> combinations = GetCombinations(possibleCoords);
                 
                 List<(List<Vector2Int>, int)> highestScoredPerms = new List<(List<Vector2Int>, int)>() { (new List<Vector2Int>(), 0) };
-                /*foreach (List<Vector2Int> perm in permutations)
+                Dictionary<HashSet<Vector2Int>, int> lengths = new Dictionary<HashSet<Vector2Int>, int>();
+                foreach (List<Vector2Int> perm in combinations)
                 {
                     int score = 0;
                     foreach (Vector2Int pos in perm)
                     {
+                        List<int> distances = new List<int>();
                         foreach (Vector2Int position in perm.Except(new List<Vector2Int>() { pos }))
                         {
-                            score += (int)Mathf.Pow(gameManager.GetShortestPath(pos, position).Count, 2);
+                            if (!lengths.Keys.Any(y => y.SetEquals(new HashSet<Vector2Int>() { pos, position })))
+                            {
+                                lengths.Add(new HashSet<Vector2Int>() { pos, position }, (int)Mathf.Pow(gameManager.GetShortestPath(pos, position).Count, 2));
+                            }
+                            distances.Add(lengths.FirstOrDefault(y => y.Key.SetEquals(new HashSet<Vector2Int>() { pos, position })).Value);
                         }
                         score += (int)Mathf.Pow((pos - new Vector2Int(0, 0)).magnitude, 2);
                         score += (int)Mathf.Pow((pos - new Vector2Int(0, gameManager.gridHeight)).magnitude, 2);
                         score += (int)Mathf.Pow((pos - new Vector2Int(gameManager.gridWidth, gameManager.gridHeight)).magnitude, 2);
                         score += (int)Mathf.Pow((pos - new Vector2Int(gameManager.gridWidth, 0)).magnitude, 2);
+                        score += (int)(distances.Sum() / Mathf.Pow((float)GetStd(distances), 1));
                     }
+
                     if (score > highestScoredPerms[0].Item2) highestScoredPerms = new List<(List<Vector2Int>, int)>() { (perm, score) };
                 }
-                coords = highestScoredPerms[Random.Range(0, highestScoredPerms.Count - 1)].Item1;*/
+                coords = highestScoredPerms[Random.Range(0, highestScoredPerms.Count - 1)].Item1;
                 break;
             }
         }
@@ -115,23 +125,31 @@ public class CoinManager : MonoBehaviour
         return coords;
     }
 
-    private List<List<Vector2Int>> GetPermutations(List<Vector2Int> list) // need to get combinations instead bc permutations are too many
-    { // even combinations are too many need to shorten it down a little
-        List<List<Vector2Int>> perms = new List<List<Vector2Int>>();
-        foreach (var item in list)
+    private double GetStd(List<int> values)
+    {
+        double avg = values.Average();
+        double sum = values.Sum(y => Math.Pow(y - avg, 2));
+        return Math.Sqrt((sum) / (values.Count() - 1));
+    }
+
+    private List<List<Vector2Int>> GetCombinations(List<Vector2Int> list)
+    {
+        List<List<Vector2Int>> combs = new List<List<Vector2Int>>();
+        foreach (Vector2Int item in list)
         {
-            foreach (var item1 in list.Except(new List<Vector2Int>() { item }))
+            foreach (Vector2Int item1 in list.Except(new List<Vector2Int>() { item }))
             {
-                foreach (var item2 in list.Except(new List<Vector2Int>() { item, item1 }))
+                foreach (Vector2Int item2 in list.Except(new List<Vector2Int>() { item, item1 }))
                 {
-                    foreach (var item3 in list.Except(new List<Vector2Int>() { item, item1, item2 }))
+                    foreach (Vector2Int item3 in list.Except(new List<Vector2Int>() { item, item1, item2 }))
                     {
-                        perms.Add(new List<Vector2Int>() { item, item1, item2, item3 });
+                        List<Vector2Int> newComb = new List<Vector2Int>() { item, item1, item2, item3 }.OrderBy(y => y.x).ThenBy(y => y.y).ToList();
+                        if (!combs.Any(y => y.SequenceEqual(newComb))) combs.Add(newComb);
                     }
                 }
             }
         }
-        return perms;
+        return combs;
     }
 
     private (List<Vector2Int>, List<Vector2Int[]>) CheckPositions(HashSet<Vector2Int> deadEnds)
@@ -143,7 +161,7 @@ public class CoinManager : MonoBehaviour
         {
             int toSpawn = gameManager.GetShortestPath(position, gameManager.spawnCoord).Count;
             int toBoss = gameManager.GetShortestPath(position, gameManager.bossCoord).Count;
-            if (toSpawn > 7 | toBoss > 4) coords.Add(position);
+            if (toSpawn > 5 && toBoss > 4) coords.Add(position);
         }
 
         foreach (Vector2Int position in coords)

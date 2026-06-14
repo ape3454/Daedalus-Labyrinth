@@ -23,9 +23,11 @@ public class CoinFragment : MapItem
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name == "Player")
+        Debug.Log("This");
+        if (other.transform.tag == "Player")
         {
-
+            AddToInventory(this.gameObject, other.gameObject);
         }
+        Destroy(this.gameObject);
     }
 }

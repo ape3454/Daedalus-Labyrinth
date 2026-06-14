@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     private GridFirstDungeonGenerator dungeonGenerator;
     private CoinManager coinController;
+    private SwordController swordController;
 
     public PlayerController player;
 
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
     {
         dungeonGenerator = this.GetComponent<GridFirstDungeonGenerator>();
         coinController = GameObject.Find("CoinFragments").GetComponent<CoinManager>();
+        swordController = GameObject.Find("SwordController").GetComponent<SwordController>();
     }
 
 
@@ -80,6 +82,8 @@ public class GameManager : MonoBehaviour
     private void Stage3()
     {
         coinController.GetStarted();
+        swordController.GetStarted();
+        player.runReset();
         spawnToBoss = GetShortestPath(spawnCoord, bossCoord);
         return;
     }
