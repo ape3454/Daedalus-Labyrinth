@@ -58,7 +58,7 @@ public class CoinManager : MonoBehaviour
             iteration++;
             if (iteration == 100) Debug.Log("What?");
 
-            if (possibleCoords.Count <= 4)
+            if (possibleCoords.Count < 4)
             {
                 if (connectingMin > 4)
                 {
@@ -81,13 +81,13 @@ public class CoinManager : MonoBehaviour
             foreach (Vector2Int position in tooCloseCoords)
             {
                 if (temporaryTooClose.Any(y => y.Contains(position))) continue;
-                List<Vector2Int> connections = tooClose.FindAll(y => y.Contains(position)).SelectMany(y => y).ToList().FindAll(y => y != position);
-                if (connections.Count == connectingMin2) temporaryPossibleCoords.Add(position);
+                List<Vector2Int> connections = tooClose.FindAll(y => y.Contains(position)).SelectMany(y => y).ToList().FindAll(y => y != position).Distinct().ToList();
+                if (connections.Count <= connectingMin2) temporaryPossibleCoords.Add(position);
                 temporaryTooClose.AddRange(tooClose.FindAll(y => y.Contains(position)));
             }
             connectingMin2++;
             
-            if (temporaryPossibleCoords.Count > 4)
+            if (temporaryPossibleCoords.Count >= 4)
             {
                 if (possibleCoords.Count < 4) possibleCoords.Union(temporaryPossibleCoords);
                 List<List<Vector2Int>> combinations = GetCombinations(possibleCoords);
@@ -135,13 +135,17 @@ public class CoinManager : MonoBehaviour
     private List<List<Vector2Int>> GetCombinations(List<Vector2Int> list)
     {
         List<List<Vector2Int>> combs = new List<List<Vector2Int>>();
-        foreach (Vector2Int item in list)
+        int start = 0;
+        foreach (Vector2Int item in list.Skip(start))
         {
-            foreach (Vector2Int item1 in list.Except(new List<Vector2Int>() { item }))
+            int start1 = 0;
+            foreach (Vector2Int item1 in list.Except(new List<Vector2Int>() { item }).Skip(start1))
             {
-                foreach (Vector2Int item2 in list.Except(new List<Vector2Int>() { item, item1 }))
+                int start2 = 0;
+                foreach (Vector2Int item2 in list.Except(new List<Vector2Int>() { item, item1 }).Skip(start2))
                 {
-                    foreach (Vector2Int item3 in list.Except(new List<Vector2Int>() { item, item1, item2 }))
+                    int start3 = 0;
+                    foreach (Vector2Int item3 in list.Except(new List<Vector2Int>() { item, item1, item2 }).Skip(start3))
                     {
                         List<Vector2Int> newComb = new List<Vector2Int>() { item, item1, item2, item3 }.OrderBy(y => y.x).ThenBy(y => y.y).ToList();
                         if (!combs.Any(y => y.SequenceEqual(newComb))) combs.Add(newComb);
@@ -152,12 +156,13 @@ public class CoinManager : MonoBehaviour
         return combs;
     }
 
-    private (List<Vector2Int>, List<Vector2Int[]>) CheckPositions(HashSet<Vector2Int> deadEnds)
+    private (List<Vector2Int>, List<Vector2Int[]>) CheckPositions(HashSet<Vector2Int> positions)
     {
         List<Vector2Int> coords = new List<Vector2Int>();
         List<Vector2Int[]> tooClose = new List<Vector2Int[]>();
-
-        foreach (Vector2Int position in deadEnds)
+        List<Vector2Int> deleteFromCoords = new List<Vector2Int>();
+        
+        foreach (Vector2Int position in positions)
         {
             int toSpawn = gameManager.GetShortestPath(position, gameManager.spawnCoord).Count;
             int toBoss = gameManager.GetShortestPath(position, gameManager.bossCoord).Count;
@@ -166,12 +171,18 @@ public class CoinManager : MonoBehaviour
 
         foreach (Vector2Int position in coords)
         {
-            foreach (Vector2Int other in coords)
+            foreach (Vector2Int other in coords.Except(new List<Vector2Int>() { position }))
             {
                 int shortestPath = gameManager.GetShortestPath(position, other).Count;
-                if (shortestPath > 4 && shortestPath != 1) tooClose.Add(new Vector2Int[] { position, other });
+                if (shortestPath < 4)
+                {
+                    deleteFromCoords.Add(position);
+                    deleteFromCoords.Add(other);
+                    tooClose.Add(new Vector2Int[] { position, other });
+                }
             }
         }
+        coords.RemoveAll(y => deleteFromCoords.Contains(y));
 
         return (coords, tooClose);
     }

@@ -1,16 +1,28 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Pedestal : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private List<GameObject> coinFragmentsPrefab;
+    private List<GameObject> coinFragments;
+    [SerializeField]
+    private GameObject coinPrefab;
 
-    // Update is called once per frame
-    void Update()
+
+    public void CreateCoin()
     {
-        
+        for (int i = 0; i < coinFragmentsPrefab.Count; i++)
+        {
+            coinFragments.Add(Instantiate(coinFragmentsPrefab[i], transform.position + new Vector3(i - 1.5f, -0.5f, 0), transform.rotation, transform));
+            coinFragments[i].AddComponent(typeof(MoveToPedestal));
+        }
+
+        if (coinFragments.All(y => y == null))
+        {
+            Instantiate(coinPrefab, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
+        }
+
     }
 }

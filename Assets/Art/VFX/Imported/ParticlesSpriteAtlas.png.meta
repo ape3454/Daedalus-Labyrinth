@@ -1,0 +1,402 @@
+fileFormatVersion: 2
+guid: 03c1346db2417f548bac77ec3dc726e5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4393765431616314309
+    second: ParticlesSpriteAtlas_0
+  - first:
+      213: 6892609638966005411
+    second: ParticlesSpriteAtlas_1
+  - first:
+      213: -724097098925224197
+    second: ParticlesSpriteAtlas_2
+  - first:
+      213: -4723329679488180253
+    second: ParticlesSpriteAtlas_3
+  - first:
+      213: -6436145247356737352
+    second: ParticlesSpriteAtlas_4
+  - first:
+      213: 4139871601917294629
+    second: ParticlesSpriteAtlas_5
+  - first:
+      213: 6141553880912750718
+    second: ParticlesSpriteAtlas_6
+  - first:
+      213: 1541219076021805114
+    second: ParticlesSpriteAtlas_7
+  - first:
+      213: 4346828517019129740
+    second: ParticlesSpriteAtlas_8
+  - first:
+      213: -2415839081433310657
+    second: ParticlesSpriteAtlas_9
+  - first:
+      213: -6787028966229489757
+    second: ParticlesSpriteAtlas_10
+  - first:
+      213: -4824087321243127875
+    second: ParticlesSpriteAtlas_11
+  - first:
+      213: 3505988132174971654
+    second: ParticlesSpriteAtlas_12
+  - first:
+      213: 1211338283817444158
+    second: ParticlesSpriteAtlas_13
+  - first:
+      213: 2317402778464309804
+    second: ParticlesSpriteAtlas_14
+  - first:
+      213: 8727191203080550744
+    second: ParticlesSpriteAtlas_15
+  - first:
+      213: 6797419400610765155
+    second: ParticlesSpriteAtlas_16
+  - first:
+      213: -717357892653917561
+    second: ParticlesSpriteAtlas_17
+  - first:
+      213: -7943008448515208190
+    second: ParticlesSpriteAtlas_18
+  - first:
+      213: 1105006622975314371
+    second: ParticlesSpriteAtlas_19
+  - first:
+      213: 897521084377913854
+    second: ParticlesSpriteAtlas_20
+  - first:
+      213: -256605996232321566
+    second: ParticlesSpriteAtlas_21
+  - first:
+      213: 8689208985483732258
+    second: ParticlesSpriteAtlas_22
+  - first:
+      213: 6008166233928796304
+    second: ParticlesSpriteAtlas_23
+  - first:
+      213: -1330268509624197120
+    second: ParticlesSpriteAtlas_24
+  - first:
+      213: -8255382704290431643
+    second: ParticlesSpriteAtlas_25
+  - first:
+      213: 1291455969615202976
+    second: ParticlesSpriteAtlas_26
+  - first:
+      213: 1524758438922106501
+    second: ParticlesSpriteAtlas_27
+  - first:
+      213: -1349664343221473502
+    second: ParticlesSpriteAtlas_28
+  - first:
+      213: 1355466793554548084
+    second: ParticlesSpriteAtlas_29
+  - first:
+      213: -410659186459930103
+    second: ParticlesSpriteAtlas_30
+  - first:
+      213: 7963924212693206479
+    second: ParticlesSpriteAtlas_31
+  - first:
+      213: -999477672988361858
+    second: ParticlesSpriteAtlas_32
+  - first:
+      213: -7922162268568569643
+    second: ParticlesSpriteAtlas_33
+  - first:
+      213: 6744572666815814161
+    second: ParticlesSpriteAtlas_34
+  - first:
+      213: 5743513988030879390
+    second: ParticlesSpriteAtlas_35
+  - first:
+      213: -6177744830659305868
+    second: ParticlesSpriteAtlas_36
+  - first:
+      213: -2503919668385634101
+    second: ParticlesSpriteAtlas_37
+  - first:
+      213: -5096289528461308136
+    second: ParticlesSpriteAtlas_38
+  - first:
+      213: 2612902633920961201
+    second: ParticlesSpriteAtlas_39
+  - first:
+      213: -4481824019176901455
+    second: ParticlesSpriteAtlas_40
+  - first:
+      213: -2938777075793182244
+    second: ParticlesSpriteAtlas_41
+  - first:
+      213: 585665226698252625
+    second: ParticlesSpriteAtlas_42
+  - first:
+      213: -1835536261280438046
+    second: ParticlesSpriteAtlas_43
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ParticlesSpriteAtlas_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b346e1e7e953603c0800000000000000
+      internalID: -4393765431616314309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParticlesSpriteAtlas_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ae8002b2f777af50800000000000000
+      internalID: 6892609638966005411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParticlesSpriteAtlas_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfecba3668d73f5f0800000000000000
+      internalID: -724097098925224197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParticlesSpriteAtlas_3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ef1c098eac537eb0800000000000000
+      internalID: -4723329679488180253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParticlesSpriteAtlas_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b8ab786ff73ea6a0800000000000000
+      internalID: -6436145247356737352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParticlesSpriteAtlas_5
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 528f108b947c37930800000000000000
+      internalID: 4139871601917294629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6e6a812750330e6458bf6212609372d8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":4.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      ParticlesSpriteAtlas_0: -4393765431616314309
+      ParticlesSpriteAtlas_1: 6892609638966005411
+      ParticlesSpriteAtlas_2: -724097098925224197
+      ParticlesSpriteAtlas_3: -4723329679488180253
+      ParticlesSpriteAtlas_4: -6436145247356737352
+      ParticlesSpriteAtlas_5: 4139871601917294629
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

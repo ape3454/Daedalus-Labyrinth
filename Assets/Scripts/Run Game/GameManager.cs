@@ -9,13 +9,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public InputAction reset;
-    public InputActionReference re;
 
     private GridFirstDungeonGenerator dungeonGenerator;
     private CoinManager coinController;
     private SwordController swordController;
 
     public PlayerController player;
+    public Minotaur minotaur;
 
     [HideInInspector]
     public List<Vector2Int> spawnToBoss;
@@ -83,15 +83,21 @@ public class GameManager : MonoBehaviour
     {
         coinController.GetStarted();
         swordController.GetStarted();
-        player.runReset();
+        
+        player.resetRun();
+        player.MoveTo((Vector2)roomCoordToMapCoord(spawnCoord) + new Vector2(0.5f, -2));
+
+        minotaur.resetRun();
+        minotaur.MoveTo((Vector2)roomCoordToMapCoord(bossCoord) + new Vector2(0.5f, 0));
+        
         spawnToBoss = GetShortestPath(spawnCoord, bossCoord);
         return;
     }
 
     public List<Vector2Int> GetShortestPath(Vector2Int firstRoom, Vector2Int secondRoom, bool formatted = false)
     {
-        Vector2Int room1 = (formatted) ? firstRoom : dungeonGenerator.roomCoordToMapCoord(firstRoom);
-        Vector2Int room2 = (formatted) ? secondRoom : dungeonGenerator.roomCoordToMapCoord(secondRoom);
+        Vector2Int room1 = (formatted) ? firstRoom : roomCoordToMapCoord(firstRoom);
+        Vector2Int room2 = (formatted) ? secondRoom : roomCoordToMapCoord(secondRoom);
 
         List<Vector2Int> path = new List<Vector2Int>() { room1 };
         if (room1 == room2) return path;
@@ -148,7 +154,7 @@ public class GameManager : MonoBehaviour
         HashSet<Vector2Int> rooms = new HashSet<Vector2Int>();
         foreach (Vector2Int room in roomsList)
         {
-            HashSet<Vector2Int[]> corridors = connections.FindAll(y => y.Contains(dungeonGenerator.roomCoordToMapCoord(room))).ToHashSet();
+            HashSet<Vector2Int[]> corridors = connections.FindAll(y => y.Contains(roomCoordToMapCoord(room))).ToHashSet();
             if (corridors.Count == numberOfIntersections) rooms.Add(room);
         }
         return rooms;

@@ -1,44 +1,67 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
-using System.Transactions;
-using UnityEngine.Rendering;
+using UnityEditor.Experimental;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Entity
 {
+
+
     // Control
     public InputAction MoveAction;
     Rigidbody2D rigidbody2d;
     Vector2 move;
-    public float speed = 5.0f;
+    public InputAction InteractAction;
+    [SerializeField]
+    private GameObject interactionBox;
+    private List<string> talkInteractions = new List<string>()
+    {
 
-    // Health
-    public int maxHealth = 3;
-    int currentHealth;
-    public int health { get { return currentHealth; } }
+    };
+    private List<string> changeInteractions = new List<string>()
+    {
+        "Pedestal",
+        "Minotaur"
+    };
+    private List<string> inspectInteractions = new List<string>()
+    {
+
+    };
 
     // I-Frames
     public float timeInvincible = 0.5f;
     bool isInvincible;
     float damageCooldown;
 
-    Animator animator;
-    Vector2 moveDirection = new Vector2(1, 0);
-
     public List<string> inventory = new List<string>();
+
+    private void Awake()
+    {
+        rigidbody2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         MoveAction.Enable();
-        rigidbody2d = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        InteractAction.Enable();
+
+        maxHealth = 3;
         currentHealth = maxHealth;
+        speed = 5f;
     }
 
-    public void runReset()
+    public void resetRun()
+    {
+        RunReset();
+    }
+
+    protected override void RunReset()
     {
         UIHandler.instance.SetHealthValue(maxHealth);
+        UIHandler.instance.UIReset();
+        moveDirection = Vector2.up;
     }
 
     // Update is called once per frame
@@ -63,6 +86,43 @@ public class PlayerController : MonoBehaviour
                 isInvincible = false;
             }
         }
+
+        RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position, moveDirection, 0.5f, LayerMask.GetMask("Interactable"));
+        if (hit)
+        {
+            if (talkInteractions.Contains(hit.transform.name))
+            {
+                UIHandler.instance.SetInteraction("Talk", "Talk");
+            }
+            if (changeInteractions.Contains(hit.transform.name))
+            {
+                switch (hit.transform.name)
+                {
+                    case "Pedestal":
+                        if (inventory.FindAll(y => y.Substring(0, 4) == "coin").Count == 4)
+                        {
+                            UIHandler.instance.SetInteraction("Change", "Assemble Coin");
+                            UIHandler.instance.ElementSetVisible("Interaction");
+                        }
+                        break;
+                    case "Minotaur":
+                        Minotaur minotaurScript = hit.transform.GetComponent<Minotaur>();
+                        Animator minotaurAnimator = hit.transform.GetComponent<Animator>();
+                        Vector2 minotaurDirection = new Vector2(minotaurAnimator.GetFloat("Look X"), minotaurAnimator.GetFloat("Look Y"));
+                        if (minotaurScript.stunned && Vector2.Dot(minotaurDirection, transform.position.normalized) >= 0.7f)
+                        {
+                            UIHandler.instance.SetInteraction("Change", "Stab Minotaur in the Back");
+                            UIHandler.instance.ElementSetVisible("Interaction");
+                        }
+                        break;
+                }
+            }
+            if (inspectInteractions.Contains(hit.transform.name))
+            {
+                UIHandler.instance.SetInteraction("Inspect", "Read");
+            }
+        }
+        UIHandler.instance.ElementSetVisible("Interaction", false);
     }
 
     void FixedUpdate()
@@ -73,10 +133,16 @@ public class PlayerController : MonoBehaviour
 
     public void AddToInventory(GameObject other)
     {
+        if (inventory.Count == 0) UIHandler.instance.ElementSetVisible("Inventory");
         inventory.Add(other.name);
+        if (other.name == "sword")
+        {
+            animator.SetTrigger("HasSword");
+        }
+        UIHandler.instance.ElementSetVisible(other.name);
     }
 
-    public void ChangeHealth(int amount)
+    public override void ChangeHealth(int amount)
     {
         if (amount < 0)
         {
