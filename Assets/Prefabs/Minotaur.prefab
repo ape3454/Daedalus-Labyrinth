@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 68690441774008327}
   - component: {fileID: 982026281293610620}
   - component: {fileID: 8563187918315160573}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Minotaur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,6 +37,7 @@ Transform:
   m_Children:
   - {fileID: 7177904438499526619}
   - {fileID: 5199779486518746636}
+  - {fileID: 2830231079453833003}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8480175661853187929
@@ -115,6 +116,7 @@ MonoBehaviour:
   smokeParticleEffect: {fileID: 3132543834645061353}
   stunnedParticleEffect: {fileID: 8518339791158940546}
   timeStunned: 2
+  stunned: 0
   chargeRange: 5
   chargeCooldown: 2
 --- !u!114 &7715071273729644140
@@ -188,7 +190,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -226,6 +228,84 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &8638456790887769989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2830231079453833003}
+  - component: {fileID: 1383018915210540172}
+  m_Layer: 0
+  m_Name: Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2830231079453833003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638456790887769989}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 528186411194774227}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1383018915210540172
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638456790887769989}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.0036215633, y: 0.3828187}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.9746016, y: 0.4122405}
+  m_EdgeRadius: 0
 --- !u!1001 &3506807428976368306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -237,6 +317,10 @@ PrefabInstance:
     - target: {fileID: 6709947338743733030, guid: 94560a4ba334bcc479a741a891df3f12, type: 3}
       propertyPath: m_Name
       value: StunnedEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6709947338743733030, guid: 94560a4ba334bcc479a741a891df3f12, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8684062830842234046, guid: 94560a4ba334bcc479a741a891df3f12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -307,7 +391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4399126286810718274, guid: 06978ed0196172b44a5ea4258a48b22f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.192
+      value: 0.645
       objectReference: {fileID: 0}
     - target: {fileID: 4399126286810718274, guid: 06978ed0196172b44a5ea4258a48b22f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -345,9 +429,21 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8496273823904217456, guid: 06978ed0196172b44a5ea4258a48b22f, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496273823904217456, guid: 06978ed0196172b44a5ea4258a48b22f, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8843401615131588706, guid: 06978ed0196172b44a5ea4258a48b22f, type: 3}
       propertyPath: m_Name
       value: SmokeEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843401615131588706, guid: 06978ed0196172b44a5ea4258a48b22f, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,8 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public InputAction reset;
-
     private GridFirstDungeonGenerator dungeonGenerator;
     private CoinManager coinController;
     private SwordController swordController;
@@ -36,8 +33,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartScene()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-        Debug.Log("Restarting Scene...");
+        SceneManager.LoadSceneAsync("MenuScene");
     }
 
     private void Awake()
@@ -52,7 +48,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         NewScene();
-        reset.Enable();
     }
 
     void NewScene()
@@ -110,11 +105,6 @@ public class GameManager : MonoBehaviour
         while (iteration < 10000)
         {
             iteration++;
-            if (iteration == 10000)
-            {
-                Debug.Log("wow");
-                Debug.Log(validPaths.Count);
-            }
             
             try
             {
@@ -165,22 +155,7 @@ public class GameManager : MonoBehaviour
     bool pressed = false;
     void Update()
     {
-        if (reset.WasPressedThisFrame())
-        {
-            Debug.Log("this happened");
-            float value = reset.ReadValue<float>();
-            if (value < 0)
-            {
-                Debug.Log("pressed");
-                pressed = true;
-                RestartScene();
-            }
-            else if (value > 0)
-            {
-                Debug.Log("released");
-                pressed = false;
-            }
-        }
+
     }
 
     public List<Vector2Int> roomCoordToMapCoord(List<Vector2Int> roomCoords)

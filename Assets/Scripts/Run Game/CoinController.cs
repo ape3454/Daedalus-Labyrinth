@@ -112,7 +112,7 @@ public class CoinManager : MonoBehaviour
                         score += (int)Mathf.Pow((pos - new Vector2Int(0, gameManager.gridHeight)).magnitude, 2);
                         score += (int)Mathf.Pow((pos - new Vector2Int(gameManager.gridWidth, gameManager.gridHeight)).magnitude, 2);
                         score += (int)Mathf.Pow((pos - new Vector2Int(gameManager.gridWidth, 0)).magnitude, 2);
-                        score += (int)(distances.Sum() / Mathf.Pow((float)GetStd(distances), 1));
+                        score += (int)(distances.Sum() / GetStd(distances));
                     }
 
                     if (score > highestScoredPerms[0].Item2) highestScoredPerms = new List<(List<Vector2Int>, int)>() { (perm, score) };

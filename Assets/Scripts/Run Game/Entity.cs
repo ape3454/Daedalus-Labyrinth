@@ -1,5 +1,4 @@
-﻿using TMPro.Examples;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {

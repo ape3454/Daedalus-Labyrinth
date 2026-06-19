@@ -8,7 +8,7 @@ public class Minotaur : Entity
     public ParticleSystem stunnedParticleEffect;
 
     // Stun Time
-    public float timeStunned = 2f;
+    public float timeStunned = 4f;
     public bool stunned;
     float stunCooldown;
 
@@ -28,7 +28,7 @@ public class Minotaur : Entity
     int stoppingDistance = 2;
     Vector2 chargePlayerPosition;
     Vector2 chargeDestination;
-    Vector2 chargeDirection;
+    public Vector2 chargeDirection;
 
     private void Awake()
     {
@@ -40,7 +40,9 @@ public class Minotaur : Entity
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        speed = 2f;
+        speed = 3f;
+        maxHealth = 60;
+        currentHealth = maxHealth;
         smokeParticleEffect.Pause();
         stunnedParticleEffect.Pause();
     }
@@ -70,10 +72,7 @@ public class Minotaur : Entity
             {
                 StartCoroutine(Charge(move));
                 chargePlayerPosition = move;
-            }
-            else if (chargeTime > 0)
-            {
-                chargeTime -= Time.deltaTime;
+                move = Vector2.zero;
             }
             else if (readyCharging)
             {
@@ -82,12 +81,14 @@ public class Minotaur : Entity
                 {
                     readyCharging = false;
                     StopCoroutine(Charge(chargePlayerPosition));
+                    StopCharging();
                 }
             }
             else if (stunned)
             {
                 stunnedParticleEffect.Play();
                 stunCooldown -= Time.deltaTime;
+                charging = false;
                 if (stunCooldown < 0)
                 {
                     stunned = false;
@@ -105,6 +106,11 @@ public class Minotaur : Entity
                 animator.SetFloat("Look Y", moveDirection.y);
                 animator.SetFloat("Speed", move.magnitude);
             }
+
+            if (chargeTime > 0)
+            {
+                chargeTime -= Time.deltaTime;
+            }
         }
     }
 
@@ -115,8 +121,7 @@ public class Minotaur : Entity
 
         yield return new WaitForSeconds(1.5f);
 
-        Debug.Log("CHARGE!");
-        speed = 8f;
+        speed = 6f;
         charging = true;
         readyCharging = false;
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
@@ -131,32 +136,28 @@ public class Minotaur : Entity
         chargeDestination = (Vector2)transform.position + move + chargeDirection * stoppingDistance;
 
         yield return new WaitUntil(() => (Vector2)transform.position == chargeDestination | !charging);
+        animator.SetFloat("Speed", 0f);
 
-        Debug.Log("Fin");
-        chargeTime = chargeCooldown;
-        charging = false;
-        speed = 2f;
+        StopCharging();
+        speed = 3f;
         smokeParticleEffect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         
     }
 
     void FixedUpdate()
     {
-        if (playerDetection.awareOfPlayer)
+        if (playerDetection.awareOfPlayer | charging)
         {
-            if (charging)
+            if (charging && !stunned)
             {
                 Vector2 position = Vector2.MoveTowards(transform.position, chargeDestination, speed * Time.deltaTime);
                 rigidbody2d.MovePosition(position);
             }
             else if (!stunned && !readyCharging)
             {
-                Vector2 position = (Vector2)rigidbody2d.position + move * speed * Time.deltaTime;
+                Vector2 position = rigidbody2d.position + move.normalized * speed * Time.deltaTime * ((chargeTime < chargeCooldown - 1f) ? 1 : -1);
                 rigidbody2d.MovePosition(position);
-                if ((Vector2)rigidbody2d.position != position)
-                {
-
-                }
+                animator.SetBool("Stunned", false);
             }
         }
     }
@@ -165,23 +166,36 @@ public class Minotaur : Entity
     {
         if (charging && other.gameObject.layer == 3)
         {
-            Debug.Log("ooh stunned");
-            charging = false;
+            StopCharging();
             stunned = true;
             stunCooldown = timeStunned;
-            if (rigidbody2d.linearVelocity.sqrMagnitude == 0)
-            {
-                move *= -1;
-                Debug.Log("do this");
-            }
+            animator.SetBool("Stunned", true);
+        }
+        if (rigidbody2d.linearVelocity.sqrMagnitude == 0)
+        {
+            move = ((stunned) ? chargeDirection : Vector2.one) * -1 * speed;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && charging)
         {
-            other.GetComponent<PlayerController>().ChangeHealth(-2);
+            if (other.name != "Player")
+            {
+                other.GetComponentInParent<PlayerController>().ChangeHealth(-1);
+            }
+            else
+            {
+                other.GetComponent<PlayerController>().ChangeHealth(-1);
+            }
+            StopCharging();
         }
+    }
+
+    private void StopCharging()
+    {
+        chargeTime = chargeCooldown;
+        charging = false;
     }
 }

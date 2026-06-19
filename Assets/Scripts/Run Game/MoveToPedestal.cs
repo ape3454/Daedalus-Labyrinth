@@ -1,5 +1,4 @@
-﻿using Unity.Cinemachine;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MoveToPedestal : MonoBehaviour
 {
@@ -11,7 +10,7 @@ public class MoveToPedestal : MonoBehaviour
     private void Start()
     {
         pedestal = transform.parent.gameObject;
-        direction = (transform.position - pedestal.transform.position + new Vector3(0, 0.5f, 0)).normalized;
+        direction = (pedestal.transform.position + new Vector3(0, 0.5f, 0) - transform.position).normalized;
     }
 
     private void Update()

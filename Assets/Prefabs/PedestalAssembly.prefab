@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1389898925672598577}
   - component: {fileID: 6135613270096131362}
   - component: {fileID: 1061052085346001129}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PedestalAssembly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,3 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce749cf5980ce94195ebd84080e2cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  coinFragmentsPrefab:
+  - {fileID: 2547551138087786224, guid: 2e50c76c9f464b44fa914087346bfa07, type: 3}
+  - {fileID: 3633177022912557999, guid: eb10766775f8d154ba69072774d35d26, type: 3}
+  - {fileID: 3368206980948756398, guid: b86a4a5ebc24c3441972a4f4b1d0ef6f, type: 3}
+  - {fileID: 702414238679728967, guid: 522728f3f782ec043b03a960a6336467, type: 3}
+  coinPrefab: {fileID: 8777672482238566356, guid: fd35107d5f17b544caa22006d01d4fc6, type: 3}

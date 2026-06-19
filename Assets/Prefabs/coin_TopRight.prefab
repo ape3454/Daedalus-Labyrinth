@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2382365966429429692}
   - component: {fileID: 8061519244262440597}
   - component: {fileID: 8176541704146034396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: coin_TopRight
   m_TagString: Map Item
   m_Icon: {fileID: 0}

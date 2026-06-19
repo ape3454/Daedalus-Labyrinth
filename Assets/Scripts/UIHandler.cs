@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Multiplayer.Center.Common.Analytics;
-using Unity.VisualScripting;
-using UnityEditor.SceneTemplate;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -33,8 +29,10 @@ public class UIHandler : MonoBehaviour
     private Label m_InteractionLabel;
     [SerializeField]
     private Texture2D interactTalk, interactChange, interactInspect;
-    bool interactionVisible;
     float fadeSpeed = 0.3f;
+
+    [SerializeField]
+    private GameObject endscreen;
 
     private void Awake()
     {
@@ -83,6 +81,8 @@ public class UIHandler : MonoBehaviour
         m_Interaction = m_InteractionBox.Q<VisualElement>("Interaction");
         m_InteractionImage = m_Interaction.Q<Image>("InteractionImage");
         m_InteractionLabel = m_Interaction.Q<Label>("InteractionLabel");
+
+        endscreen.SetActive(false);
     }
 
     public void UIReset()
@@ -159,6 +159,15 @@ public class UIHandler : MonoBehaviour
                 m_InteractionImage.image = interactInspect;
                 m_InteractionLabel.text = label;
                 break;
+        }
+    }
+
+    public void DisplayEndScreen(bool win)
+    {
+        endscreen.SetActive(true);
+        if (win)
+        {
+
         }
     }
 }

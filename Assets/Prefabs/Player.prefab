@@ -190,7 +190,24 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     m_Flags: 0
-  speed: 5
+  InteractAction:
+    m_Name: Interact
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c8fe8ca8-b1c5-48c2-b2fd-7f73007041fc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: f3ac7722-dde4-41b6-8b72-983f81233d38
+      m_Path: <Keyboard>/f
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Interact
+      m_Flags: 0
+    m_Flags: 0
+  interactionBox: {fileID: 0}
   timeInvincible: 0.5
   inventory: []
 --- !u!95 &8421616127631370708

@@ -26,7 +26,7 @@ public class CoinFragment : MapItem
         Debug.Log("This");
         if (other.transform.tag == "Player")
         {
-            AddToInventory(this.gameObject, other.gameObject);
+            AddToInventory(transform.gameObject, other.gameObject);
         }
         Destroy(this.gameObject);
     }
