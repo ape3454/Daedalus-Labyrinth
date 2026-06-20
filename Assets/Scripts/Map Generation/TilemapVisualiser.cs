@@ -76,6 +76,7 @@ public class TilemapVisualiser : MonoBehaviour
 
         foreach (var position in positions)
         {
+            Debug.Log(position);
             randomWeight = Random.Range(0, cumulativeWeight[^1]);
             PaintSingleTile(tilemap, tiles.ElementAt(cumulativeWeight.FindIndex(y => randomWeight <= y)), position);
         }

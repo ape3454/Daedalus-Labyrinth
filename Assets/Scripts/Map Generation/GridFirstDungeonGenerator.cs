@@ -35,7 +35,8 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     public int gridWidth, gridHeight;
     public List<Vector2Int> roomCoords;
     private List<Vector2Int> mapCoords;
-    private HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
+    public HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
+    public HashSet<Vector2Int> corridorFloor = new HashSet<Vector2Int>();
 
     public List<Vector2Int[]> connections { get { return branches; } }
     List<Vector2Int[]> branches = new List<Vector2Int[]>();
@@ -65,7 +66,7 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         HashSet<Vector2Int> gridPositions = new HashSet<Vector2Int>();
 
         CreateRooms(gridPositions);
-        GenerateMap();
+        //GenerateMap();
     }
 
     private void GenerateMap()
@@ -120,10 +121,17 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         {
             floor = CreateSimpleRooms(mapCoords);
         } 
-        HashSet<Vector2Int> corridors = ConnectRooms();
-        floor.UnionWith(corridors);
-        tilemapVisualiser.PaintFloorTiles(floor);
-        WallGenerator.CreateWalls(floor, tilemapVisualiser);
+        corridorFloor = ConnectRooms();
+        HashSet<Vector2Int> totalFloor = floor.Union(corridorFloor).ToHashSet();
+        List<Vector2Int> bossCorridor = new List<Vector2Int>();
+        for (int i = roomCoordToMapCoord(bossPosition).y; i < roomCoordToMapCoord(bossPosition + Vector2Int.up * bossCorridorLength).y; i++)
+        {
+            bossCorridor.Add(new Vector2Int(roomCoordToMapCoord(bossPosition).x, i));
+        }
+        gameManager.GetPathFloor(bossCorridor);
+
+        totalFloor.ExceptWith(bossCorridor);
+        PaintFloor(totalFloor);
     }
 
     private HashSet<Vector2Int> ConnectRooms()
@@ -374,5 +382,12 @@ public class GridFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         Vector2Int translateFactor = new Vector2Int(roomWidth + 2 * offset + 1, roomHeight + 2 * offset + 1);
         Vector2Int mapCoord = roomCoord * translateFactor;
         return mapCoord;
+    }
+
+    public void PaintFloor(HashSet<Vector2Int> floor)
+    {
+        tilemapVisualiser.Clear();
+        tilemapVisualiser.PaintFloorTiles(floor);
+        WallGenerator.CreateWalls(floor, tilemapVisualiser);
     }
 }

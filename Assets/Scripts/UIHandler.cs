@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -28,15 +29,25 @@ public class UIHandler : MonoBehaviour
     private Image m_InteractionImage;
     private Label m_InteractionLabel;
     [SerializeField]
-    private Texture2D interactTalk, interactChange, interactInspect;
+    private StyleBackground interactTalk, interactChange, interactInspect;
     float fadeSpeed = 0.3f;
 
     [SerializeField]
-    private GameObject endscreen;
+    private GameObject m_Endscreen;
+    [SerializeField]
+    private GameObject m_Result;
+    private TextMeshPro result;
+    [SerializeField]
+    private GameObject m_FlavourText;
+    private TextMeshPro flavourText;
+    [SerializeField]
+    private GameObject m_Return;
+    private TextMeshPro returnText;
 
     private void Awake()
     {
         instance = this;
+        Debug.Log("instance created");
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -82,7 +93,10 @@ public class UIHandler : MonoBehaviour
         m_InteractionImage = m_Interaction.Q<Image>("InteractionImage");
         m_InteractionLabel = m_Interaction.Q<Label>("InteractionLabel");
 
-        endscreen.SetActive(false);
+        m_Endscreen.SetActive(false);
+        result = m_Result.GetComponent<TextMeshPro>();
+        flavourText = m_FlavourText.GetComponent<TextMeshPro>();
+        returnText = m_Return.GetComponent<TextMeshPro>();
     }
 
     public void UIReset()
@@ -148,15 +162,15 @@ public class UIHandler : MonoBehaviour
         switch (interaction)
         {
             case "Talk":
-                m_InteractionImage.image = interactTalk;
+                m_InteractionImage.style.backgroundImage = interactTalk;
                 m_InteractionLabel.text = label;
                 break;
             case "Change":
-                m_InteractionImage.image = interactChange;
+                m_InteractionImage.style.backgroundImage = interactChange;
                 m_InteractionLabel.text = label;
                 break;
             case "Inspect":
-                m_InteractionImage.image = interactInspect;
+                m_InteractionImage.style.backgroundImage = interactInspect;
                 m_InteractionLabel.text = label;
                 break;
         }
@@ -164,10 +178,18 @@ public class UIHandler : MonoBehaviour
 
     public void DisplayEndScreen(bool win)
     {
-        endscreen.SetActive(true);
         if (win)
         {
-
+            result.text = "The <i>Minotaur</i> is slain";
+            flavourText.text = "The <i>Minotaur</i> lies among the bloodied cobble paving, heart skewered by steel. Stone rumbles overhead and large chunks start falling around the room. Throughout the labyrinth, affrighted creatures scamper away from collapsed corridors. The exitway is swarmed with pallid moving masses, desperate to escape the <i>Minotaur's sepulchre</i>. You flee the dark into the palace at <u>Knossos</u>...";
+            returnText.text = "Return <b><u>Victorious</u></b>";
         }
+        else
+        {
+            result.text = "Your sacrifice has been appreciated";
+            flavourText.text = "Though the <i>Minotaur's</i> voracity is limitless, you have inspirited its desire to eat the lush banquets <i>King Minos</i> presented him septennially. But for now, the <i>Minotaur</i> returns to hibernation... <br>Your soul crosses the <u>River Lethe</u>...";
+            returnText.text = "Return from the <u>Underworld</u>";
+        }
+        m_Endscreen.SetActive(true);
     }
 }

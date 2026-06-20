@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class PlayerController : Entity
 {
-
+    AssembledCoinController coinController;
+    GameManager gameManager;
 
     // Control
     public InputAction MoveAction;
@@ -34,8 +35,10 @@ public class PlayerController : Entity
 
     private void Awake()
     {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        coinController = GetComponent<AssembledCoinController>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -93,7 +96,6 @@ public class PlayerController : Entity
             }
             if (changeInteractions.Contains(hit.transform.name))
             {
-                Debug.Log(hit.transform.name);
                 switch (hit.transform.name)
                 {
                     case "Pedestal":
@@ -130,7 +132,6 @@ public class PlayerController : Entity
                             inventory.RemoveAll(y => y.Substring(0, 4) == "coin");
                             StartCoroutine(hit.transform.GetComponent<Pedestal>().CreateCoin());
                             UIHandler.instance.ElementSetVisible("Interaction", false);
-                            // assembled coin controller creates a path
                         }
                         break;
                     case "Minotaur":
@@ -140,6 +141,7 @@ public class PlayerController : Entity
                         if (minotaurScript.stunned && Vector2.Dot(minotaurDirection, transform.position.normalized) >= 0.7f && inventory.Contains("sword"))
                         {
                             UIHandler.instance.DisplayEndScreen(true);
+                            gameManager.EndGame();
                         }
                         break;
                 }
@@ -156,11 +158,16 @@ public class PlayerController : Entity
 
     public void AddToInventory(GameObject other)
     {
+        Debug.Log(other.name);
         if (inventory.Count == 0) UIHandler.instance.ElementSetVisible("Inventory");
         inventory.Add(other.name);
         if (other.name == "sword")
         {
             animator.SetTrigger("HasSword");
+        }
+        if (other.name == "coin_Full")
+        {
+            coinController.ShowShortestPath();
         }
         UIHandler.instance.ElementSetVisible(other.name);
     }

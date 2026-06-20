@@ -20,6 +20,7 @@ public class Pedestal : MonoBehaviour
         {
             GameObject gameObject = Instantiate(coinFragmentsPrefab[i], transform.position + new Vector3(i - 1.5f, -0.5f, 0), transform.rotation, transform);
             coinFragments.Add(gameObject);
+            Destroy(coinFragments[i].GetComponent<CoinFragment>());
             coinFragments[i].AddComponent(typeof(MoveToPedestal));
             UIHandler.instance.ElementSetVisible(coinFragmentsPrefab[i].name, false);
         }

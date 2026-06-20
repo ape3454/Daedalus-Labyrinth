@@ -15,6 +15,7 @@ public class AssembledCoinController : MonoBehaviour
     public void ShowShortestPath()
     {
         pathSpawnToBoss = gameManager.spawnToBoss;
-
+        HashSet<Vector2Int> corridorFloor = gameManager.GetPathFloor(pathSpawnToBoss);
+        gameManager.PaintNewFloor(corridorFloor);
     }
 }
