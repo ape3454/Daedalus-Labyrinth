@@ -159,14 +159,6 @@ public class GameManager : MonoBehaviour
         return rooms;
     }
 
-    // Update is called once per frame
-
-    bool pressed = false;
-    void Update()
-    {
-
-    }
-
     public List<Vector2Int> roomCoordToMapCoord(List<Vector2Int> roomCoords)
     {
         return dungeonGenerator.roomCoordToMapCoord(roomCoords);
@@ -219,14 +211,6 @@ public class GameManager : MonoBehaviour
             }
         }
         return floor;
-    }
-
-    public HashSet<Vector2Int> GetUnnecessaryFloor(HashSet<Vector2Int> exceptFloor)
-    {
-        HashSet<Vector2Int> unnecessaryFloor = corridorsFloor;
-        unnecessaryFloor.ExceptWith(exceptFloor);
-        unnecessaryFloor.ExceptWith(roomsFloor);
-        return unnecessaryFloor;
     }
 
     public void PaintNewFloor(HashSet<Vector2Int> corridorFloor)

@@ -50,11 +50,6 @@ public class UIHandler : MonoBehaviour
         Debug.Log("instance created");
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {        
-    }
-
     IEnumerator FadeOpacity(float duration, VisualElement element, bool fadein = true)
     {
         float startOpacity = element.style.opacity.value;

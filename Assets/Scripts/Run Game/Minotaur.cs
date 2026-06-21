@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Minotaur : Entity
 {
-    bool alive;
     public ParticleSystem smokeParticleEffect;
     public ParticleSystem stunnedParticleEffect;
 

@@ -4,7 +4,6 @@ using UnityEngine.UIElements;
 
 public class MenuHandler : MonoBehaviour
 {
-    UIDocument uiDocument;
     GameObject loading;
 
     private void Awake()
