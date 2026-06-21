@@ -36,13 +36,13 @@ public class UIHandler : MonoBehaviour
     private GameObject m_Endscreen;
     [SerializeField]
     private GameObject m_Result;
-    private TextMeshPro result;
+    private TextMeshProUGUI result;
     [SerializeField]
     private GameObject m_FlavourText;
-    private TextMeshPro flavourText;
+    private TextMeshProUGUI flavourText;
     [SerializeField]
     private GameObject m_Return;
-    private TextMeshPro returnText;
+    private TextMeshProUGUI returnText;
 
     private void Awake()
     {
@@ -94,9 +94,9 @@ public class UIHandler : MonoBehaviour
         m_InteractionLabel = m_Interaction.Q<Label>("InteractionLabel");
 
         m_Endscreen.SetActive(false);
-        result = m_Result.GetComponent<TextMeshPro>();
-        flavourText = m_FlavourText.GetComponent<TextMeshPro>();
-        returnText = m_Return.GetComponent<TextMeshPro>();
+        result = m_Result.GetComponent<TextMeshProUGUI>();
+        flavourText = m_FlavourText.GetComponent<TextMeshProUGUI>();
+        returnText = m_Return.GetComponent<TextMeshProUGUI>();
     }
 
     public void UIReset()

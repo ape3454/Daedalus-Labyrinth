@@ -138,7 +138,7 @@ public class PlayerController : Entity
                         Minotaur minotaurScript = hit.transform.GetComponent<Minotaur>();
                         Animator minotaurAnimator = hit.transform.GetComponent<Animator>();
                         Vector2 minotaurDirection = new Vector2(minotaurAnimator.GetFloat("Look X"), minotaurAnimator.GetFloat("Look Y"));
-                        if (minotaurScript.stunned && Vector2.Dot(minotaurDirection, transform.position.normalized) >= 0.7f && inventory.Contains("sword"))
+                        if (minotaurScript.stunned && Vector2.Dot(minotaurDirection, (hit.transform.position - transform.position).normalized) >= 0.7f && inventory.Contains("sword"))
                         {
                             UIHandler.instance.DisplayEndScreen(true);
                             gameManager.EndGame();
